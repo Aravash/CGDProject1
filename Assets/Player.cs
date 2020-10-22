@@ -26,6 +26,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelTracker._i.getState() == LevelTracker.LevelState.LS_WIN)
+        {
+            if (Input.anyKeyDown)
+            {
+                // TODO: Load next level
+            }
+            return;
+        }
+        if (LevelTracker._i.getState() == LevelTracker.LevelState.LS_WAIT && Input.anyKeyDown)
+        {
+            LevelTracker._i.startLevel();
+        }
         if(Input.GetKeyDown("space"))
         {
             fireProjectile();
@@ -34,12 +46,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        move();
+        // player can only move in the play state
+        if (LevelTracker._i.getState() == LevelTracker.LevelState.LS_PLAY)
+        {
+            move();
+        }
 
         // cam follow
         Vector3 cam_pos = Camera.main.transform.position;
-        cam_pos.x = Mathf.SmoothStep(cam_pos.x, gameObject.transform.position.x, Time.deltaTime * 10);
-        cam_pos.y = Mathf.SmoothStep(cam_pos.y, gameObject.transform.position.y, Time.deltaTime * 10);
+        cam_pos.x = Mathf.SmoothStep(cam_pos.x, gameObject.transform.position.x, Time.fixedDeltaTime * 10);
+        cam_pos.y = Mathf.SmoothStep(cam_pos.y, gameObject.transform.position.y, Time.fixedDeltaTime * 10);
         Camera.main.transform.position = cam_pos;
     }
 
@@ -112,6 +128,7 @@ public class Player : MonoBehaviour
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;
 
+        LevelTracker._i.clearEnemies();
         EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
         foreach(EnemySpawn spawn in spawns)
         {

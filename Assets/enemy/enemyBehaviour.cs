@@ -31,6 +31,12 @@ public class enemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(asleep)
+        {
+            // AI is disabled during pre-game
+            return;
+        }
+
         if (hasPlayerLOS())
         {
             had_LOS = true;
@@ -103,8 +109,16 @@ public class enemyBehaviour : MonoBehaviour
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
         projectile.GetComponent<Bullet>().init(gameObject, transform.right);
     }
+
+    // external interface funcs
     public void kill()
     {
-
+        Destroy(gameObject);
+        LevelTracker._i.enemyDeath();
+    }
+    private bool asleep = true;
+    public void wake()
+    {
+        asleep = false;
     }
 }
