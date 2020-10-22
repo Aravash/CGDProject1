@@ -302,7 +302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039301620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.14, y: -0.71, z: 0}
+  m_LocalPosition: {x: -5.2, y: -2.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -485,5 +485,51 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1039301624}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071065
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423567, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272137463330423565, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3494188710955587424, guid: e6ec10da60aa0f3469788a12f9ac00b2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6daf5c6b2e7b8cc47a5e04f49a0093d9, type: 3}
