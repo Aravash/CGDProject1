@@ -67,10 +67,8 @@ public class Player : MonoBehaviour
     {
         applyFriction();
 
+        // Fetch user directional input
         Vector2 wish_dir = new Vector2(0, 0);
-
-
-
         if (Input.GetKey("d"))
             wish_dir.x++;
         if (Input.GetKey("a"))
@@ -81,15 +79,18 @@ public class Player : MonoBehaviour
             wish_dir.y--;
         wish_dir.Normalize();
 
+        // Convert input to movement
         Vector2 acceleration = wish_dir;
         acceleration.x *= MV_ACCEL;
-
         gameObject.GetComponent<Rigidbody2D>().velocity += acceleration;
+
+        // if moving
         if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
         {
+            // Rotate the player to match their velocity
             Vector2 v = gameObject.GetComponent<Rigidbody2D>().velocity;
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(theta - 90, Vector3.forward);
         }
     }
 
@@ -119,19 +120,23 @@ public class Player : MonoBehaviour
 
     private void fireProjectile()
     {
+        // Create a vector from the player's rotation
         float theta = gameObject.transform.rotation.eulerAngles.z + 90;
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
 
+        // create bullet
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
         projectile.GetComponent<Bullet>().init(gameObject, dir);
     }
 
     public void kill()
     {
+        // Move player to start
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;
 
+        // Reset all enemies
         LevelTracker._i.clearEnemies();
         EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
         foreach(EnemySpawn spawn in spawns)
@@ -139,6 +144,7 @@ public class Player : MonoBehaviour
             spawn.activate();
         }
 
+        // Clear all bullets
         Bullet[] bullets = FindObjectsOfType<Bullet>();
         foreach(Bullet bullet in bullets)
         {

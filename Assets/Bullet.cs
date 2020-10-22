@@ -12,11 +12,13 @@ public class Bullet : MonoBehaviour
     {
         dir.Normalize();
 
+        // place the bullet in front of the shooter
         Vector3 pos = origin.transform.position;
         pos.x += dir.x * SPAWN_OFFSET;
         pos.y += dir.y * SPAWN_OFFSET;
         gameObject.transform.position = pos;
 
+        // Start the bullet's movement
         GetComponent<Rigidbody2D>().velocity = dir * SPEED;
     }
     
@@ -33,8 +35,10 @@ public class Bullet : MonoBehaviour
             collision.collider.GetComponent<Player>().kill();
         }
 
+        // detach trail
         trail.transform.parent = null;
         trail.autodestruct = true;
+        // destroy bullet
         Destroy(gameObject);
     }
 }
