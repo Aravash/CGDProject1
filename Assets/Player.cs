@@ -111,5 +111,11 @@ public class Player : MonoBehaviour
     {
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;
+
+        EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
+        foreach(EnemySpawn spawn in spawns)
+        {
+            spawn.activate();
+        }
     }
 }
