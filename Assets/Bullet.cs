@@ -27,8 +27,7 @@ public class Bullet : MonoBehaviour
         // {
         //     collision.collider.GetComponent<EnemyBehaviours>().kill();
         // }
-
-
+        
         trail.transform.parent = null;
         trail.autodestruct = true;
         Destroy(gameObject);
