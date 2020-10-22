@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
     }
 
     private void fireProjectile()
-    {        
+    {
         float theta = gameObject.transform.rotation.eulerAngles.z + 90;
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
         Bullet[] bullets = FindObjectsOfType<Bullet>();
         foreach(Bullet bullet in bullets)
         {
-            Destroy(bullet);
+            Destroy(bullet.gameObject);
         }
     }
 }
