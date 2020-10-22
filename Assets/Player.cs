@@ -117,5 +117,11 @@ public class Player : MonoBehaviour
         {
             spawn.activate();
         }
+
+        Bullet[] bullets = FindObjectsOfType<Bullet>();
+        foreach(Bullet bullet in bullets)
+        {
+            Destroy(bullet);
+        }
     }
 }
