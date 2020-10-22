@@ -19,7 +19,7 @@ public class EnemySpawn : MonoBehaviour
             Destroy(child);
         }
 
-        child = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject);
+        child = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject, gameObject.transform);
     }
 
 
