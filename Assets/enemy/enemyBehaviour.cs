@@ -6,16 +6,19 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class enemyBehaviour : MonoBehaviour
-{
+{ [SerializeField] private bool showDebugLine = true;
+    
    [SerializeField]
    private Transform player;
 
    private Transform pointA;
    private Transform pointB;
-   [SerializeField] private float shoot_timer_length = 3f;
-   
+   [SerializeField] 
+   private float shoot_timer_length = 3f;
    private float shoot_timer;
 
+   [SerializeField] 
+   private float movespeed = 1f;
    private bool had_LOS = false;
    private Vector2 last_player_pos;
 
@@ -50,7 +53,8 @@ public class enemyBehaviour : MonoBehaviour
         RaycastHit2D hit;
         if (hit = Physics2D.Linecast(transform.position, player.position, layerMask))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.white, 2.5f);
+            if(showDebugLine)Debug.DrawLine(transform.position, hit.point, Color.white, 2.5f);
+            
             if (hit.collider.CompareTag("Player"))
             {
                 return true;
@@ -61,12 +65,16 @@ public class enemyBehaviour : MonoBehaviour
     }
     void chase()
     {
-        if (Vector2.Distance(transform.position, player.position) >= 0)
+        //move toward the player, but not too close!
+        if (Vector2.Distance(transform.position, player.position) >= 2)
         {
-            Vector2.MoveTowards(transform.position, player.position,
-                1 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.position,
+                movespeed * Time.deltaTime);
         }
+        //rotate to look at the player
+        transform.right = player.position - transform.position;
         
+        //shoot when possible
         if (shoot_timer <= 0f)
         {
             shoot();
@@ -78,13 +86,13 @@ public class enemyBehaviour : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, last_player_pos) >= 0)
         {
-            Vector2.MoveTowards(transform.position, last_player_pos,
-                1 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, last_player_pos,
+                movespeed * Time.deltaTime);
         }
     }
     void patrol()
     {
-        
+        //coming soon(TM)
     }
     void shoot()
     {
@@ -93,7 +101,7 @@ public class enemyBehaviour : MonoBehaviour
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));*/
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
-        projectile.GetComponent<Bullet>().init(gameObject, Vector2.left);
+        projectile.GetComponent<Bullet>().init(gameObject, transform.right);
     }
     public void kill()
     {
