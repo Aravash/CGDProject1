@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
         {
             move();
         }
+        else
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity *= 0;
+        }
 
         // cam follow
         Vector3 cam_pos = Camera.main.transform.position;
