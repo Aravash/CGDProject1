@@ -5,11 +5,10 @@ using UnityEngine;
 public sealed class LevelTracker
 {     
     private static readonly LevelTracker instance = new LevelTracker();
-    static LevelTracker()
-    {
-    }
     private LevelTracker()
     {
+        overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+        overlay.sortingLayerName = "Overlay";
     }
     public static LevelTracker _i
     {
@@ -52,11 +51,18 @@ public sealed class LevelTracker
             enemy.wake();
         }
         // Hide "READY?" msg
+        GameObject.Destroy(overlay.gameObject);
+        overlay = null;        
     }
     private void endLevel()
     {
         Debug.Log("LEVEL COMPLETE");
         // Show "SUPER FLAT" msg
         level_state = LevelState.LS_WIN;
+
+        overlay = GameObject.Instantiate(Resources.Load("overlays/WinScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+        overlay.sortingLayerName = "Overlay";
     }
+
+    SpriteRenderer overlay = null;    
 }
