@@ -6,22 +6,21 @@ using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class enemyBehaviour : MonoBehaviour
-{
+{ [SerializeField] private bool showDebugLine = true;
+    
    [SerializeField]
    private Transform player;
 
-   [SerializeField]
-   private float action_timer = 1f;
+   private Transform pointA;
+   private Transform pointB;
+   [SerializeField] 
+   private float shoot_timer_length = 3f;
+   private float shoot_timer;
 
-   enum action_state
-   {
-       IDLE,
-       SHOOTING,
-       CHASING,
-       FLEEING
-   }
-
-   private action_state state = action_state.IDLE;
+   [SerializeField] 
+   private float movespeed = 1f;
+   private bool had_LOS = false;
+   private Vector2 last_player_pos;
 
    // Start is called before the first frame update
     void Start()
@@ -32,47 +31,20 @@ public class enemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (state)
-        {
-            case(action_state.IDLE):
-                break;
-            case(action_state.SHOOTING):
-                doShooting();
-                break;
-            case(action_state.CHASING):
-                doChasing();
-                break;
-            case(action_state.FLEEING):
-                doFleeing();
-                break;
-        }
-
         if (hasPlayerLOS())
         {
-            switch (timerCheck())
-            {
-                case(0):
-                    action_timer -= Time.deltaTime;
-                    break;
-                case (1):
-                    state = action_state.SHOOTING;
-                    break;
-                case (2):
-                    state = action_state.CHASING;
-                    action_timer = 3f;
-                    break;
-                case (3):
-                    state = action_state.FLEEING;
-                    action_timer = 3f;
-                    break;
-            }
+            had_LOS = true;
+            last_player_pos = player.position;
+            chase();
         }
-        else state = action_state.IDLE;
+        else if (had_LOS)
+        {
+            hunt();
+        }
+        else patrol();
     }
-
     bool hasPlayerLOS()
     {
-        Debug.Log("checking LOS");
         //set layermask to enemy layer
         int layerMask = 1 << 8;
         //set mask to check for everything but enemies
@@ -81,8 +53,9 @@ public class enemyBehaviour : MonoBehaviour
         RaycastHit2D hit;
         if (hit = Physics2D.Linecast(transform.position, player.position, layerMask))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.white, 2.5f);
-            if (hit.collider.CompareTag("Player")) 
+            if(showDebugLine)Debug.DrawLine(transform.position, hit.point, Color.white, 2.5f);
+            
+            if (hit.collider.CompareTag("Player"))
             {
                 return true;
             }
@@ -90,47 +63,46 @@ public class enemyBehaviour : MonoBehaviour
         
         return false;
     }
-
-    void doShooting()
+    void chase()
+    {
+        //move toward the player, but not too close!
+        if (Vector2.Distance(transform.position, player.position) >= 2)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position,
+                movespeed * Time.deltaTime);
+        }
+        //rotate to look at the player
+        transform.right = player.position - transform.position;
+        
+        //shoot when possible
+        if (shoot_timer <= 0f)
+        {
+            shoot();
+            shoot_timer = shoot_timer_length;
+        }
+        else shoot_timer -= Time.deltaTime;
+    }
+    void hunt()
+    {
+        if (Vector2.Distance(transform.position, last_player_pos) >= 0)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, last_player_pos,
+                movespeed * Time.deltaTime);
+        }
+    }
+    void patrol()
+    {
+        //coming soon(TM)
+    }
+    void shoot()
     {
         Debug.Log("i want to shoot");
         /*float theta = gameObject.transform.rotation.eulerAngles.z + 90;
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));*/
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
-        projectile.GetComponent<Bullet>().init(gameObject, Vector2.left);
+        projectile.GetComponent<Bullet>().init(gameObject, transform.right);
     }
-
-    void doChasing()
-    {
-        // Check if close enough to player
-        if (Vector3.Distance(transform.position, player.position) > 1f)
-        {
-            //Move toward player
-            transform.position = Vector3.MoveTowards(transform.position, player.position, 1 * Time.deltaTime);
-        }
-    }
-
-    void doFleeing()
-    {
-        Vector3 opposite_player = transform.position - player.position;
-        //Move away from player
-        transform.position = Vector3.MoveTowards(transform.position, opposite_player, 1 * Time.deltaTime);
-    }
-
-    /*
-     * returns a random between 1 and 4 if action timer is 0 or less
-     * returns 0 if action timer is above 0 and reduces action_timer by time
-     */
-    int timerCheck()
-    {
-        if (action_timer <= 0)
-        {
-            return Random.Range(1, 4);
-        }
-        return 0;
-    }
-
     public void kill()
     {
 
