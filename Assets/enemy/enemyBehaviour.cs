@@ -130,4 +130,9 @@ public class enemyBehaviour : MonoBehaviour
         }
         return 0;
     }
+
+    public void kill()
+    {
+
+    }
 }
