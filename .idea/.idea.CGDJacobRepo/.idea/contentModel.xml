@@ -9,6 +9,7 @@
         <e p="Bullet.cs" t="Include" />
         <e p="enemy" t="Include">
           <e p="enemyBehaviour.cs" t="Include" />
+          <e p="EnemySpawn.cs" t="Include" />
         </e>
         <e p="Player.cs" t="Include" />
       </e>
