@@ -22,12 +22,17 @@ public class Bullet : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // check if enemy
-        // if (collision.collider.GetComponent<EnemyBehaviours>() != null)
-        // {
-        //     collision.collider.GetComponent<EnemyBehaviours>().kill();
-        // }
-        
+        //check if enemy
+        if (collision.collider.GetComponent<enemyBehaviour>() != null)
+        {
+            collision.collider.GetComponent<enemyBehaviour>().kill();
+        }
+        //check if player
+        if (collision.collider.GetComponent<Player>() != null)
+        {
+            collision.collider.GetComponent<Player>().kill();
+        }
+
         trail.transform.parent = null;
         trail.autodestruct = true;
         Destroy(gameObject);

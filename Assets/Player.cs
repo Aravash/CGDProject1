@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +8,15 @@ public class Player : MonoBehaviour
     const float MV_ACCEL = 0.9f;
     const float MV_FRICTION = 0.3f;
     const float RADIUS = 0.8f;
+    Vector3 spawn_pos;
+    Quaternion spawn_rot;
 
     // Use this for initialization
     void Start()
     {
+        spawn_pos = gameObject.transform.position;
+        spawn_rot = gameObject.transform.rotation;
+
         Vector3 cam_pos = Camera.main.transform.position;
         cam_pos.x = gameObject.transform.position.x;
         cam_pos.y = gameObject.transform.position.y;
@@ -93,12 +98,30 @@ public class Player : MonoBehaviour
     }
 
     private void fireProjectile()
-    {        
+    {
         float theta = gameObject.transform.rotation.eulerAngles.z + 90;
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
 
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
         projectile.GetComponent<Bullet>().init(gameObject, dir);
+    }
+
+    public void kill()
+    {
+        gameObject.transform.position = spawn_pos;
+        gameObject.transform.rotation = spawn_rot;
+
+        EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
+        foreach(EnemySpawn spawn in spawns)
+        {
+            spawn.activate();
+        }
+
+        Bullet[] bullets = FindObjectsOfType<Bullet>();
+        foreach(Bullet bullet in bullets)
+        {
+            Destroy(bullet.gameObject);
+        }
     }
 }
