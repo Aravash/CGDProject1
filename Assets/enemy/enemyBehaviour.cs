@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class enemyBehaviour : MonoBehaviour
 {
    [SerializeField]
    private Transform player;
-
-   private Vector3 player_pos;
-   
-   [SerializeField]
-   private GameObject bullet;
 
    [SerializeField]
    private float action_timer = 1f;
@@ -28,7 +26,7 @@ public class enemyBehaviour : MonoBehaviour
    // Start is called before the first frame update
     void Start()
     {
-        player_pos = player.position;
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -74,13 +72,14 @@ public class enemyBehaviour : MonoBehaviour
 
     bool hasPlayerLOS()
     {
-        Debug.Log("checking player LOS");
+        Debug.Log("checking LOS");
         //set layermask to enemy layer
         int layerMask = 1 << 8;
         //set mask to check for everything but enemies
         layerMask = ~layerMask;
-        RaycastHit hit;
-        if (Physics.Linecast(transform.position, player_pos, out hit, layerMask))
+
+        RaycastHit2D hit;
+        if (hit = Physics2D.Linecast(transform.position, player.position, layerMask))
         {
             Debug.DrawLine(transform.position, hit.point, Color.white, 2.5f);
             if (hit.collider.CompareTag("Player")) 
@@ -95,22 +94,26 @@ public class enemyBehaviour : MonoBehaviour
     void doShooting()
     {
         Debug.Log("i want to shoot");
-        //Instantiate(bullet, transform.position, transform.rotation);
+        /*float theta = gameObject.transform.rotation.eulerAngles.z + 90;
+        theta *= Mathf.Deg2Rad;
+        Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));*/
+        GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
+        projectile.GetComponent<Bullet>().init(gameObject, Vector2.left);
     }
 
     void doChasing()
     {
         // Check if close enough to player
-        if (Vector3.Distance(transform.position, player_pos) > 1f)
+        if (Vector3.Distance(transform.position, player.position) > 1f)
         {
             //Move toward player
-            transform.position = Vector3.MoveTowards(transform.position, player_pos, 1 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, 1 * Time.deltaTime);
         }
     }
 
     void doFleeing()
     {
-        Vector3 opposite_player = transform.position - player_pos;
+        Vector3 opposite_player = transform.position - player.position;
         //Move away from player
         transform.position = Vector3.MoveTowards(transform.position, opposite_player, 1 * Time.deltaTime);
     }
