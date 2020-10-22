@@ -32,6 +32,12 @@ public class enemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(asleep)
+        {
+            // AI is disabled during pre-game
+            return;
+        }
+
         switch (state)
         {
             case(action_state.IDLE):
@@ -131,8 +137,15 @@ public class enemyBehaviour : MonoBehaviour
         return 0;
     }
 
+    // external interface funcs
     public void kill()
     {
-
+        Destroy(gameObject);
+        LevelTracker._i.enemyDeath();
+    }
+    private bool asleep = true;
+    public void wake()
+    {
+        asleep = false;
     }
 }
