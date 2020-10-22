@@ -9,10 +9,10 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activate();
+        activate(true);
     }
 
-    public void activate()
+    public void activate(bool initial = false)
     {
         if (child != null)
         {
@@ -20,6 +20,12 @@ public class EnemySpawn : MonoBehaviour
         }
         LevelTracker._i.trackEnemy();
         child = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject, gameObject.transform);
+
+        // if this is a REspawn, not an initial spawn, set to wake immediately
+        if(!initial)
+        {
+            child.GetComponent<enemyBehaviour>().wake();
+        }
     }
 
 
