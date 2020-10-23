@@ -26,17 +26,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelTracker._i.getState() == LevelTracker.LevelState.LS_WIN)
+        if (EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_WIN)
         {
             if (Input.anyKeyDown)
             {
-                // TODO: Load next level
+                EnemyTracker._i.nextLevel();
             }
             return;
         }
-        if (LevelTracker._i.getState() == LevelTracker.LevelState.LS_WAIT && Input.anyKeyDown)
+        if (EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_WAIT && Input.anyKeyDown)
         {
-            LevelTracker._i.startLevel();
+            EnemyTracker._i.startLevel();
         }
         if(Input.GetKeyDown("space"))
         {
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // player can only move in the play state
-        if (LevelTracker._i.getState() == LevelTracker.LevelState.LS_PLAY)
+        if (EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_PLAY)
         {
             move();
         }
@@ -132,12 +132,18 @@ public class Player : MonoBehaviour
 
     public void kill()
     {
+        // Prevent the level from resetting if the player has already won
+        if (EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_WIN)
+        {
+            return;
+        }
+
         // Move player to start
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;
 
         // Reset all enemies
-        LevelTracker._i.clearEnemies();
+        EnemyTracker._i.countEnemies();
         EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
         foreach(EnemySpawn spawn in spawns)
         {

@@ -18,7 +18,6 @@ public class EnemySpawn : MonoBehaviour
         {
             Destroy(child);
         }
-        LevelTracker._i.trackEnemy();
         child = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject, gameObject.transform);
 
         // if this is a REspawn, not an initial spawn, set to wake immediately
