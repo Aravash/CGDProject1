@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         gameObject.transform.rotation = spawn_rot;
 
         // Reset all enemies
-        LevelTracker._i.clearEnemies();
+        LevelTracker._i.countEnemies();
         EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
         foreach(EnemySpawn spawn in spawns)
         {

@@ -16,13 +16,10 @@ public sealed class LevelTracker
     }
 
     private int num_enemies;
-    public void clearEnemies()
+    public void countEnemies()
     {
-        num_enemies = 0;
-    }
-    public void trackEnemy()
-    {
-        ++num_enemies;
+        EnemySpawn[] enemies = GameObject.FindObjectsOfType<EnemySpawn>();
+        num_enemies = enemies.Length;
     }
     public void enemyDeath()
     {
@@ -45,6 +42,7 @@ public sealed class LevelTracker
     {
         Debug.Log("LEVEL START");
         level_state = LevelState.LS_PLAY;
+        countEnemies();
         enemyBehaviour[] enemies = GameObject.FindObjectsOfType<enemyBehaviour>();
         foreach(enemyBehaviour enemy in enemies)
         {
