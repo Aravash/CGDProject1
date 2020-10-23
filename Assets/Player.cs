@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                // TODO: Load next level
+                EnemyTracker._i.nextLevel();
             }
             return;
         }
@@ -132,9 +132,9 @@ public class Player : MonoBehaviour
 
     public void kill()
     {
-        if(EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_WIN)
+        // Prevent the level from resetting if the player has already won
+        if (EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_WIN)
         {
-            // Prevent the level from resetting if the player has already won
             return;
         }
 

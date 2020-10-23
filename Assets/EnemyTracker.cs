@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public sealed class EnemyTracker
 {     
@@ -9,7 +10,6 @@ public sealed class EnemyTracker
     private EnemyTracker()
     {
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
-        overlay.sortingLayerName = "Overlay";
     }
     public static EnemyTracker _i
     {
@@ -67,5 +67,15 @@ public sealed class EnemyTracker
         overlay = GameObject.Instantiate(Resources.Load("overlays/WinScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
     }
 
-    SpriteRenderer overlay = null;    
+    SpriteRenderer overlay = null;
+
+    // Level Switching
+    int current_level_id = 1;
+    public void nextLevel()
+    {
+        ++current_level_id;
+        SceneManager.LoadScene("Level" + current_level_id);
+        level_state = LevelState.LS_WAIT;
+        overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+    }
 }
