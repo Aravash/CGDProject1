@@ -132,6 +132,12 @@ public class Player : MonoBehaviour
 
     public void kill()
     {
+        if(EnemyTracker._i.getState() == EnemyTracker.LevelState.LS_WIN)
+        {
+            // Prevent the level from resetting if the player has already won
+            return;
+        }
+
         // Move player to start
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;

@@ -43,6 +43,7 @@ public sealed class EnemyTracker
 
     public LevelState getState() { return level_state; }
 
+    // When the player performs their first input
     public void startLevel()
     {
         Debug.Log("LEVEL START");
@@ -57,6 +58,7 @@ public sealed class EnemyTracker
         overlay = null;        
     }
 
+    // When all enemies have died, change State and load Overlay
     private void endLevel()
     {
         Debug.Log("LEVEL COMPLETE");
