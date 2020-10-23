@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         wish_dir.Normalize();
 
         Vector2 acceleration = wish_dir;
-        acceleration.x *= MV_ACCEL;
+        acceleration *= MV_ACCEL;
 
         gameObject.GetComponent<Rigidbody2D>().velocity += acceleration;
         if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
             Vector2 v = gameObject.GetComponent<Rigidbody2D>().velocity;
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
+            Debug.Log("Spd: " + gameObject.GetComponent<Rigidbody2D>().velocity.magnitude);
         }
     }
 
@@ -144,5 +145,11 @@ public class Player : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }
+    }
+
+    static float getTopSpeed()
+    {
+        float top = MV_ACCEL / MV_FRICTION;
+        return top < MV_MAX_SPEED ? top : MV_MAX_SPEED;
     }
 }
