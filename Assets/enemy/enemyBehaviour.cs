@@ -12,16 +12,19 @@ public class enemyBehaviour : MonoBehaviour
     [SerializeField]
     private Transform player;
     
-    private Transform pointA;
-    private Transform pointB;
     [SerializeField] 
     private float shoot_timer_length = 3f;
     private float shoot_timer;
     
     [SerializeField] 
+    private float help_timer_length = 2f;
+    private float help_timer;
+    
+    [SerializeField] 
     private float movespeed = 1f;
     private bool had_LOS = false;
     private Vector2 last_player_pos;
+    private Vector2 patrol_pos;
     bool alerted = false;
     
     const int ASSIST_SEARCH_RESOLUTION = 10;
@@ -111,13 +114,20 @@ public class enemyBehaviour : MonoBehaviour
     }
     void patrol()
     {
-        //coming soon(TM)
+        transform.position = Vector2.MoveTowards(transform.position, patrol_pos,
+            movespeed * Time.deltaTime);
     }
 
     void helpAlly()
     {
         // This is more complex, so we don't want to do it every frame
-        // TODO: timer
+        if (help_timer <= 0)
+        {
+            help_timer -= Time.deltaTime;
+            return;
+        }
+
+        help_timer = help_timer_length;
 
         // find all nearby allies that are in combat
         enemyBehaviour[] allies = FindObjectsOfType<enemyBehaviour>();
@@ -233,6 +243,11 @@ public class enemyBehaviour : MonoBehaviour
     public void wake()
     {
         asleep = false;
+    }
+
+    public void setPatrolPos(Vector2 change)
+    {
+        patrol_pos = change;
     }
 
     // For communicating with other enemies
