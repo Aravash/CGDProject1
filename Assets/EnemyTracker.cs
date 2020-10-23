@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class LevelTracker
+public sealed class EnemyTracker
 {     
-    private static readonly LevelTracker instance = new LevelTracker();
-    private LevelTracker()
+    private static readonly EnemyTracker instance = new EnemyTracker();
+    private EnemyTracker()
     {
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
         overlay.sortingLayerName = "Overlay";
     }
-    public static LevelTracker _i
+    public static EnemyTracker _i
     {
         get { return instance; }
     }
