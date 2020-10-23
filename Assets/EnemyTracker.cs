@@ -4,6 +4,7 @@ using UnityEngine;
 
 public sealed class EnemyTracker
 {     
+    // Establish Singleton
     private static readonly EnemyTracker instance = new EnemyTracker();
     private EnemyTracker()
     {
@@ -15,6 +16,7 @@ public sealed class EnemyTracker
         get { return instance; }
     }
 
+    // ENEMY TRACKING
     private int num_enemies;
     public void countEnemies()
     {
@@ -30,6 +32,7 @@ public sealed class EnemyTracker
         }
     }
 
+    // STATE CONTROL
     public enum LevelState
     {
         LS_WAIT,
@@ -37,7 +40,9 @@ public sealed class EnemyTracker
         LS_WIN
     }
     LevelState level_state = LevelState.LS_WAIT;
+
     public LevelState getState() { return level_state; }
+
     public void startLevel()
     {
         Debug.Log("LEVEL START");
@@ -48,18 +53,16 @@ public sealed class EnemyTracker
         {
             enemy.wake();
         }
-        // Hide "READY?" msg
         GameObject.Destroy(overlay.gameObject);
         overlay = null;        
     }
+
     private void endLevel()
     {
         Debug.Log("LEVEL COMPLETE");
-        // Show "SUPER FLAT" msg
         level_state = LevelState.LS_WIN;
 
         overlay = GameObject.Instantiate(Resources.Load("overlays/WinScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
-        overlay.sortingLayerName = "Overlay";
     }
 
     SpriteRenderer overlay = null;    
