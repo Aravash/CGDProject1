@@ -9,7 +9,11 @@ public sealed class EnemyTracker
     private static readonly EnemyTracker instance = new EnemyTracker();
     private EnemyTracker()
     {
+        // Create initial READY overlay
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+
+        // Tie local onSceneLoaded() function to the Scene Manager
+        SceneManager.sceneLoaded += onSceneLoaded;
     }
     public static EnemyTracker _i
     {
@@ -73,8 +77,18 @@ public sealed class EnemyTracker
     int current_level_id = 1;
     public void nextLevel()
     {
+        // Remove Winstate overlay
+        GameObject.Destroy(overlay.gameObject);
+        overlay = null;
+
+        // Load next level
         ++current_level_id;
         SceneManager.LoadScene("Level" + current_level_id);
+    }
+
+    void onSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Reset self for the new level
         level_state = LevelState.LS_WAIT;
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
     }
