@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: e6ec10da60aa0f3469788a12f9ac00b2
+guid: 0f5fed593c443d44cb11ddb6bf1b72ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3494188710955587424
-    second: EnemyRotation_0
+      213: -4644928311764008042
+    second: EnemyRotation-sheet_0
   - first:
-      213: 7461120113892407264
-    second: EnemyRotation_1
+      213: -1420584273752788621
+    second: EnemyRotation-sheet_1
   - first:
-      213: 1814981342113332630
-    second: EnemyRotation_2
+      213: -3507613368434456573
+    second: EnemyRotation-sheet_2
   - first:
-      213: -120584850272225917
-    second: EnemyRotation_3
+      213: 1553468350136126118
+    second: EnemyRotation-sheet_3
   - first:
-      213: 6805278050906594780
-    second: EnemyRotation_4
+      213: -8221870481191291180
+    second: EnemyRotation-sheet_4
   - first:
-      213: 4925707058127070650
-    second: EnemyRotation_5
+      213: -5985335819313682074
+    second: EnemyRotation-sheet_5
   - first:
-      213: -4983796539061096704
-    second: EnemyRotation_6
+      213: -7081520030262228053
+    second: EnemyRotation-sheet_6
   - first:
-      213: -7991421898224612171
-    second: EnemyRotation_7
+      213: -4753550182595050493
+    second: EnemyRotation-sheet_7
   - first:
-      213: -6380027969967103579
-    second: EnemyRotation_8
+      213: 2992948503406225109
+    second: EnemyRotation-sheet_8
   - first:
-      213: 3433694785745927125
-    second: EnemyRotation_9
+      213: -5224011221336633436
+    second: EnemyRotation-sheet_9
   - first:
-      213: 5995447655297303313
-    second: EnemyRotation_10
+      213: 540709182052501047
+    second: EnemyRotation-sheet_10
   - first:
-      213: -4341994133510232091
-    second: EnemyRotation_11
+      213: -3079189472779230636
+    second: EnemyRotation-sheet_11
   - first:
-      213: -4407033443616892687
-    second: EnemyRotation_12
+      213: 7356141559236945167
+    second: EnemyRotation-sheet_12
   - first:
-      213: 6166046548037921042
-    second: EnemyRotation_13
+      213: -695837129781528726
+    second: EnemyRotation-sheet_13
   - first:
-      213: 1470938626875337734
-    second: EnemyRotation_14
+      213: -7708827659736246355
+    second: EnemyRotation-sheet_14
   - first:
-      213: -4745441245856502916
-    second: EnemyRotation_15
+      213: 3844697485457697709
+    second: EnemyRotation-sheet_15
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyRotation_0
+      name: EnemyRotation-sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +148,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d8b20d40f01d2f408192d80898a40a5
-      internalID: -3494188710955587424
+      spriteID: 9149cfd88204376468118a5cead4e700
+      internalID: -4644928311764008042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_1
+      name: EnemyRotation-sheet_1
       rect:
         serializedVersion: 2
         x: 8
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d115347c0e3c964a81d80408b9300c3
-      internalID: 7461120113892407264
+      spriteID: 5a5f3103c14a09a42b5d84559361fcbd
+      internalID: -1420584273752788621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_2
+      name: EnemyRotation-sheet_2
       rect:
         serializedVersion: 2
         x: 16
@@ -190,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e83b2618bfa7724da493124240c0cab
-      internalID: 1814981342113332630
+      spriteID: 37587e8ec11359f498f0210d7ac847aa
+      internalID: -3507613368434456573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_3
+      name: EnemyRotation-sheet_3
       rect:
         serializedVersion: 2
         x: 24
@@ -211,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f43b8ce6dc8bfe540a7d474bad90e250
-      internalID: -120584850272225917
+      spriteID: 5b5dc5ec404f215488b4e971c9f08aa0
+      internalID: 1553468350136126118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_4
+      name: EnemyRotation-sheet_4
       rect:
         serializedVersion: 2
         x: 32
@@ -232,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51f2f6d66aebc7a47835ea959acacd1a
-      internalID: 6805278050906594780
+      spriteID: dc39f36bd7601364db622b464ee1e8a9
+      internalID: -8221870481191291180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_5
+      name: EnemyRotation-sheet_5
       rect:
         serializedVersion: 2
         x: 40
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de5164dade2e8ed48955f87e0223cec6
-      internalID: 4925707058127070650
+      spriteID: 43003d51c2bea2f4baa7ec78d29ebc5b
+      internalID: -5985335819313682074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_6
+      name: EnemyRotation-sheet_6
       rect:
         serializedVersion: 2
         x: 48
@@ -274,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceac122003d0867439c1bb012c888ffb
-      internalID: -4983796539061096704
+      spriteID: 9175ae3170740ec4084aa48a48fb2883
+      internalID: -7081520030262228053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_7
+      name: EnemyRotation-sheet_7
       rect:
         serializedVersion: 2
         x: 56
@@ -295,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 136f44c3d0e96d24c91eaf929332eb8b
-      internalID: -7991421898224612171
+      spriteID: b5270c094edbb194293a251d0ef29a50
+      internalID: -4753550182595050493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_8
+      name: EnemyRotation-sheet_8
       rect:
         serializedVersion: 2
         x: 64
@@ -316,14 +316,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06a1fa805668a3c4fbf569c70aa9b2e6
-      internalID: -6380027969967103579
+      spriteID: cacbb27bb6016274f99b800d449cfff0
+      internalID: 2992948503406225109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_9
+      name: EnemyRotation-sheet_9
       rect:
         serializedVersion: 2
         x: 72
@@ -337,14 +337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1daef3b87b73cf46aa1aa44a83c4e9e
-      internalID: 3433694785745927125
+      spriteID: 8c035d462366e8845a4a240034f7ab75
+      internalID: -5224011221336633436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_10
+      name: EnemyRotation-sheet_10
       rect:
         serializedVersion: 2
         x: 80
@@ -358,14 +358,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58ae460ffe121804a8019400171ea8a2
-      internalID: 5995447655297303313
+      spriteID: 7da5432c768c73145b2f0b34465d11d3
+      internalID: 540709182052501047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_11
+      name: EnemyRotation-sheet_11
       rect:
         serializedVersion: 2
         x: 88
@@ -379,14 +379,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2e97f3f9d645f249b0eeda3ce1099d3
-      internalID: -4341994133510232091
+      spriteID: 740f7deeae25eeb4a8d1c48a9813f4f1
+      internalID: -3079189472779230636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_12
+      name: EnemyRotation-sheet_12
       rect:
         serializedVersion: 2
         x: 96
@@ -400,14 +400,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f24b21408ebc7fb4ba9e1c011b2382d3
-      internalID: -4407033443616892687
+      spriteID: 38ad3b6fd44e16f42a665e5a05a553f8
+      internalID: 7356141559236945167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_13
+      name: EnemyRotation-sheet_13
       rect:
         serializedVersion: 2
         x: 104
@@ -421,14 +421,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7b86ac0e592b5045b1b0efbc3085d89
-      internalID: 6166046548037921042
+      spriteID: b36e4ff43762770458df4122e928d81f
+      internalID: -695837129781528726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_14
+      name: EnemyRotation-sheet_14
       rect:
         serializedVersion: 2
         x: 112
@@ -442,14 +442,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c45f94f6f8aca544981979a52992ebce
-      internalID: 1470938626875337734
+      spriteID: 5f514ea0ee5ff464a8a44f71e30868e3
+      internalID: -7708827659736246355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnemyRotation_15
+      name: EnemyRotation-sheet_15
       rect:
         serializedVersion: 2
         x: 120
@@ -463,8 +463,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9123550df771d9944a1b3ebbeb302210
-      internalID: -4745441245856502916
+      spriteID: 8e75123fb3ccb31459fc7d67dc60249d
+      internalID: 3844697485457697709
       vertices: []
       indices: 
       edges: []
