@@ -116,6 +116,9 @@ public class enemyBehaviour : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, patrol_pos,
             movespeed * Time.deltaTime);
+        
+        //rotate to look at the player
+        transform.right = patrol_pos - (Vector2)transform.position;
     }
 
     void helpAlly()
