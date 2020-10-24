@@ -1,53 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager
 {
-    public static TimeManager Instance { get; private set; }
+    public static TimeManager Instance = new TimeManager();
 
     [SerializeField]
     private float currentPlayerSpeed;
     [SerializeField]
-    private float currentGameSpeed;
+    private float currentGameSpeed = 0.1f;
 
     private float minGameSpeed = 0.1f;
     private float maxGameSpeed = 1f;
-
+    //private float fixedDeltaTime;
 
     private GameObject player;
 
-    private void Awake()
+    public static TimeManager i
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        get { return Instance; }
     }
 
-    private void Start()
+    private TimeManager()
     {
-        player = FindObjectOfType<Player>().gameObject;
-        //Time.timeScale = gameSpeed;
-     
-    }
-
-    void Update()
-    {
-        currentPlayerSpeed = player.GetComponent<Rigidbody2D>().velocity.magnitude;
-        currentGameSpeed = Time.timeScale;
-        ChangeTime();
+        player = GameObject.FindObjectOfType<Player>().gameObject;
     }
 
     public void ChangeTime()
     {
-        float timeSpeed = (currentPlayerSpeed >= 0.3f) ? maxGameSpeed: minGameSpeed;
-        Time.timeScale = Mathf.Lerp(Time.timeScale, timeSpeed, currentPlayerSpeed);
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        currentPlayerSpeed = player.GetComponent<Rigidbody2D>().velocity.magnitude;
+
+        currentPlayerSpeed = 
+        float timeSpeed = (currentPlayerSpeed <= 0.5f) ? minGameSpeed: maxGameSpeed;
+
+        currentGameSpeed = Mathf.Lerp(currentGameSpeed, timeSpeed, currentPlayerSpeed);
+        //Time.fixedDeltaTime = Time.timeScale * 0.02f; //to fix laggy slow motion .02 is apparently standard
+        //Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
+
+       
+    }
+
+    public Vector2 getTimeMultiplier()
+    {
+        currentGameSpeed = currentPlayerSpeed;
+
+        return currentGameSpeed;
+
     }
 }

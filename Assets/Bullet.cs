@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
         Vector2 vel = true_velocity;
         vel.Normalize();
         vel *= SPEED;
-        // vel *= TimeManager.Instance.getTimeMultiplier();
+        vel *= TimeManager.Instance.getTimeMultiplier();
         GetComponent<Rigidbody2D>().velocity = vel;
     }
 }
