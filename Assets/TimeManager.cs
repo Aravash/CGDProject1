@@ -33,6 +33,7 @@ public class TimeManager
     {
         currentPlayerSpeed = Player.FindObjectOfType<Player>().GetComponent<Rigidbody2D>().velocity.magnitude;
         float interp = currentPlayerSpeed / Player.getTopSpeed();
+        interp *= interp;
         //timeSpeed = (currentPlayerSpeed > minGameSpeed) ? maxGameSpeed : minGameSpeed;
         currentGameSpeed = Mathf.Lerp(minGameSpeed, maxGameSpeed, interp);
     }
