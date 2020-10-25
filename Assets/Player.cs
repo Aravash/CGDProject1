@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
             // Rotate the player to match their velocity
             Vector2 v = gameObject.GetComponent<Rigidbody2D>().velocity;
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(theta - 90, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
         }
 
         // Dilate time
