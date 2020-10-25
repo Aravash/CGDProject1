@@ -40,6 +40,10 @@ public class TimeManager
 
     public float getTimeMultiplier()
     {
+        if(LevelManager._i.getState() == LevelManager.LevelState.LS_WIN)
+        {
+            return 1;
+        }
         return currentGameSpeed;
     }
 }
