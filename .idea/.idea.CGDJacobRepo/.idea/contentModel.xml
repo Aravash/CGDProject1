@@ -26,6 +26,7 @@
         <e p="GunProjectile.cs" t="Include" />
         <e p="LevelManager.cs" t="Include" />
         <e p="Player.cs" t="Include" />
+        <e p="PlayerSpriteRotation.cs" t="Include" />
         <e p="resources" t="Include">
           <e p="overlays" t="Include">
             <e p="bulletRender.cs" t="Include" />

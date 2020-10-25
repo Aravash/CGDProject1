@@ -18,11 +18,9 @@ public class bulletRender : MonoBehaviour
         foreach (Image img in bullets)
         {
             bullets[i] = transform.GetChild(i).GetComponent<Image>();
-            Debug.Log("assigned 1 bullet to an image");
             //bullets[i].enabled = false;
             i++;
         }
-        Debug.Log(bullets[5]);
     }
 
     private void Update()
