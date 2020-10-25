@@ -179,29 +179,25 @@ public class Player : MonoBehaviour
 
         // Reset all enemies
         LevelManager._i.countEnemies();
-        EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
-        foreach(EnemySpawn spawn in spawns)
+        foreach(EnemySpawn spawn in FindObjectsOfType<EnemySpawn>())
         {
             spawn.activate();
         }
 
-        // Clear all bullets
-        Bullet[] bullets = FindObjectsOfType<Bullet>();
-        foreach(Bullet bullet in bullets)
+        // Clear all entities
+        foreach(Bullet bullet in FindObjectsOfType<Bullet>())
         {
             Destroy(bullet.gameObject);
         }
-        
-        // Clear all ammoboxes
-        ammoBox[] ammoboxes = FindObjectsOfType<ammoBox>();
-        foreach(ammoBox ammobox in ammoboxes)
+        foreach(ammoBox ammobox in FindObjectsOfType<ammoBox>())
         {
             Destroy(ammobox.gameObject);
         }
-        
-        // Clear all guns on floor
-        GunDrop[] guns = FindObjectsOfType<GunDrop>();
-        foreach(GunDrop gun in guns)
+        foreach (GunDrop gun in FindObjectsOfType<GunDrop>())
+        {
+            Destroy(gun.gameObject);
+        }
+        foreach (GunProjectile gun in FindObjectsOfType<GunProjectile>())
         {
             Destroy(gun.gameObject);
         }
