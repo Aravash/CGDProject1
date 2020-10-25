@@ -7,19 +7,24 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Bullet.cs" t="Include" />
+        <e p="ButtonController.cs" t="Include" />
+        <e p="CanvasController.cs" t="Include" />
+        <e p="CanvasManager.cs" t="Include" />
         <e p="destroyAfterAnim.cs" t="Include" />
         <e p="enemy" t="Include">
           <e p="ammo" t="Include">
             <e p="ammoBox.cs" t="Include" />
           </e>
           <e p="DebugAwaken.cs" t="Include" />
+          <e p="DebugExplosionCreator.cs" t="Include" />
           <e p="enemyBehaviour.cs" t="Include" />
           <e p="EnemySpawn.cs" t="Include" />
           <e p="EnemySpriteRotation.cs" t="Include" />
         </e>
-        <e p="EnemyTracker.cs" t="Include" />
+        <e p="ExplosionManager.cs" t="Include" />
         <e p="GunDrop.cs" t="Include" />
         <e p="GunProjectile.cs" t="Include" />
+        <e p="LevelManager.cs" t="Include" />
         <e p="Player.cs" t="Include" />
         <e p="TimeManager.cs" t="Include" />
       </e>

@@ -11,6 +11,8 @@ public class enemyBehaviour : MonoBehaviour
     
     [SerializeField]
     private Transform player;
+
+    [SerializeField] private float social_distance = 3.5f;
     
     [SerializeField] 
     private float shoot_timer_length_min = 3f;
@@ -81,7 +83,7 @@ public class enemyBehaviour : MonoBehaviour
         last_player_pos = player.position;
 
         //move toward the player, but not too close!
-        if (Vector2.Distance(transform.position, player.position) >= 2)
+        if (Vector2.Distance(transform.position, player.position) >= social_distance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position,
                 movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
