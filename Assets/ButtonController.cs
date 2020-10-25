@@ -11,7 +11,8 @@ public enum ButtonType
     BEGIN,
     OPTIONS,
     ENDGAME,
-    OPTIONSRETURN
+    OPTIONSRETURN,
+    RESOLUTIONCHANGE
 }
 
 public class ButtonController : MonoBehaviour
