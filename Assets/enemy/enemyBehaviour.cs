@@ -127,15 +127,6 @@ public class enemyBehaviour : MonoBehaviour
 
     void helpAlly()
     {
-        // This is more complex, so we don't want to do it every frame
-        if (help_timer <= 0)
-        {
-            help_timer -= Time.deltaTime * TimeManager.Instance.getTimeMultiplier();
-            return;
-        }
-
-        help_timer = help_timer_length;
-
         // find all nearby allies that are in combat
         enemyBehaviour[] allies = FindObjectsOfType<enemyBehaviour>();
         List<enemyBehaviour> alliesInCombat = new List<enemyBehaviour>();
