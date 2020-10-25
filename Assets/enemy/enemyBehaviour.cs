@@ -13,7 +13,9 @@ public class enemyBehaviour : MonoBehaviour
     private Transform player;
     
     [SerializeField] 
-    private float shoot_timer_length = 3f;
+    private float shoot_timer_length_min = 3f;
+    [SerializeField] 
+    private float shoot_timer_length_max = 1f;
     private float shoot_timer;
     
     [SerializeField] 
@@ -91,9 +93,9 @@ public class enemyBehaviour : MonoBehaviour
         if (shoot_timer <= 0f)
         {
             shoot();
-            shoot_timer = shoot_timer_length;
+            shoot_timer = Random.Range(shoot_timer_length_min, shoot_timer_length_max);
         }
-        else shoot_timer -= Time.deltaTime;
+        else shoot_timer -= Time.deltaTime * TimeManager.Instance.getTimeMultiplier();
     }
     void hunt()
     {
@@ -115,7 +117,7 @@ public class enemyBehaviour : MonoBehaviour
     void patrol()
     {
         transform.position = Vector2.MoveTowards(transform.position, patrol_pos,
-            movespeed * Time.deltaTime);
+            movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
         
         //rotate to look at the player
         transform.right = patrol_pos - (Vector2)transform.position;
@@ -123,6 +125,13 @@ public class enemyBehaviour : MonoBehaviour
 
     void helpAlly()
     {
+        // This is more complex, so we don't want to do it every frame
+        if (help_timer <= 0)
+        {
+            help_timer -= Time.deltaTime * TimeManager.Instance.getTimeMultiplier();
+            return;
+        }
+
         help_timer = help_timer_length;
 
         // find all nearby allies that are in combat
@@ -208,7 +217,6 @@ public class enemyBehaviour : MonoBehaviour
 
     void shoot()
     {
-        Debug.Log("i want to shoot");
         /*float theta = gameObject.transform.rotation.eulerAngles.z + 90;
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));*/
@@ -232,6 +240,9 @@ public class enemyBehaviour : MonoBehaviour
     // external interface funcs
     public void kill()
     {
+        GameObject ammobox = Instantiate(Resources.Load("Prefabs/AmmoBox") as GameObject);
+        ammobox.GetComponent<Transform>().position = transform.position;
+        
         Destroy(gameObject);
         LevelManager._i.enemyDeath();
     }
