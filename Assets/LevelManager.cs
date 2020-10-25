@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public sealed class EnemyTracker
+public sealed class LevelManager
 {     
     // Establish Singleton
-    private static readonly EnemyTracker instance = new EnemyTracker();
-    private EnemyTracker()
+    private static readonly LevelManager instance = new LevelManager();
+    private LevelManager()
     {
         // Create initial READY overlay
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
@@ -15,7 +15,7 @@ public sealed class EnemyTracker
         // Tie local onSceneLoaded() function to the Scene Manager
         SceneManager.sceneLoaded += onSceneLoaded;
     }
-    public static EnemyTracker _i
+    public static LevelManager _i
     {
         get { return instance; }
     }

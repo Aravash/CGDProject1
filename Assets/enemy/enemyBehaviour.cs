@@ -233,7 +233,7 @@ public class enemyBehaviour : MonoBehaviour
     public void kill()
     {
         Destroy(gameObject);
-        EnemyTracker._i.enemyDeath();
+        LevelManager._i.enemyDeath();
     }
     private bool asleep = true;
     public void wake()
