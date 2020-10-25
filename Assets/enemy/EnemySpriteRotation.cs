@@ -44,58 +44,58 @@ public class EnemySpriteRotation : MonoBehaviour
         switch (rounded)
         {
             case 0:
-                ChangeSprite(4);
-                break;
-            case 1:
-                ChangeSprite(5);
-                break;
-            case 2:
-                ChangeSprite(6);
-                break;
-            case 3:
-                ChangeSprite(7);
-                break;
-            case 4:
-                ChangeSprite(8);
-                break;
-            case 5:
-                ChangeSprite(9);
-                break;
-            case 6:
-                ChangeSprite(10);
-                break;
-            case 7:
-                ChangeSprite(11);
-                break;
-            case 8:
                 ChangeSprite(12);
                 break;
-            case 9:
+            case 1:
                 ChangeSprite(13);
                 break;
-            case 10:
+            case 2:
                 ChangeSprite(14);
                 break;
-            case 11:
+            case 3:
                 ChangeSprite(15);
                 break;
-            case 12:
+            case 4:
                 ChangeSprite(0);
                 break;
-            case 13:
+            case 5:
                 ChangeSprite(1);
                 break;
-            case 14:
+            case 6:
                 ChangeSprite(2);
                 break;
-            case 15:
+            case 7:
                 ChangeSprite(3);
                 break;
-            case 16:
+            case 8:
                 ChangeSprite(4);
                 break;
+            case 9:
+                ChangeSprite(5);
+                break;
+            case 10:
+                ChangeSprite(6);
+                break;
+            case 11:
+                ChangeSprite(7);
+                break;
+            case 12:
+                ChangeSprite(8);
+                break;
+            case 13:
+                ChangeSprite(9);
+                break;
+            case 14:
+                ChangeSprite(10);
+                break;
+            case 15:
+                ChangeSprite(11);
+                break;
+            case 16:
+                ChangeSprite(12);
+                break;
             default:
-                ChangeSprite(4);
+                ChangeSprite(12);
                 break;
 
         }
@@ -103,7 +103,6 @@ public class EnemySpriteRotation : MonoBehaviour
 
     void ChangeSprite(int num)
     {
-        Debug.Log(num);
         spriteRenderer.sprite = sprites[num];
     }
 }
