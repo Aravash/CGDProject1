@@ -14,9 +14,11 @@ public class TimeManager
 
     private float minGameSpeed = 0.1f;
     private float maxGameSpeed = 1f;
+    private float timeSpeed;
     //private float fixedDeltaTime;
 
-    private GameObject player;
+
+    Vector2 dir;
 
     public static TimeManager i
     {
@@ -25,27 +27,20 @@ public class TimeManager
 
     private TimeManager()
     {
-        player = GameObject.FindObjectOfType<Player>().gameObject;
+        //currentGameSpeed = minGameSpeed;
     }
-
     public void ChangeTime()
     {
-        currentPlayerSpeed = player.GetComponent<Rigidbody2D>().velocity.magnitude;
+        currentPlayerSpeed = Player.FindObjectOfType<Player>().GetComponent<Rigidbody2D>().velocity.magnitude;
 
-        currentPlayerSpeed = 
-        float timeSpeed = (currentPlayerSpeed <= 0.5f) ? minGameSpeed: maxGameSpeed;
+        timeSpeed = (currentPlayerSpeed > minGameSpeed) ? maxGameSpeed : minGameSpeed;
 
-        currentGameSpeed = Mathf.Lerp(currentGameSpeed, timeSpeed, currentPlayerSpeed);
-        //Time.fixedDeltaTime = Time.timeScale * 0.02f; //to fix laggy slow motion .02 is apparently standard
-        //Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
-
-       
+        currentGameSpeed = Mathf.Lerp(currentGameSpeed, timeSpeed, currentGameSpeed);
     }
 
-    public Vector2 getTimeMultiplier()
+    public float getTimeMultiplier()
     {
-        currentGameSpeed = currentPlayerSpeed;
-
+        Debug.Log("HAVE DETECTED A CHANGE!");
         return currentGameSpeed;
 
     }

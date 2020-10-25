@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
         {
             fireProjectile();
         }
+
+        TimeManager.Instance.ChangeTime();
     }
 
     private void FixedUpdate()
@@ -147,7 +149,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    static float getTopSpeed()
+    public static float getTopSpeed()
     {
         float top = MV_ACCEL / MV_FRICTION;
         return top < MV_MAX_SPEED ? top : MV_MAX_SPEED;
