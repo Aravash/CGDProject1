@@ -28,12 +28,9 @@ public class GunProjectile : MonoBehaviour
         if (collision.collider.GetComponent<enemyBehaviour>() != null)
         {
             collision.collider.GetComponent<enemyBehaviour>().kill();
-            DropGun();
         }
-        else if (collision.collider.CompareTag("Wall"))
-        {
-            DropGun();
-        }
+
+        DropGun();
     }
 
     private void DropGun()
