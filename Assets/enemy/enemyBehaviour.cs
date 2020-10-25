@@ -13,7 +13,9 @@ public class enemyBehaviour : MonoBehaviour
     private Transform player;
     
     [SerializeField] 
-    private float shoot_timer_length = 3f;
+    private float shoot_timer_length_min = 3f;
+    [SerializeField] 
+    private float shoot_timer_length_max = 1f;
     private float shoot_timer;
     
     [SerializeField] 
@@ -91,9 +93,9 @@ public class enemyBehaviour : MonoBehaviour
         if (shoot_timer <= 0f)
         {
             shoot();
-            shoot_timer = shoot_timer_length;
+            shoot_timer = Random.Range(shoot_timer_length_min, shoot_timer_length_max);
         }
-        else shoot_timer -= Time.deltaTime;
+        else shoot_timer -= Time.deltaTime * TimeManager.Instance.getTimeMultiplier();
     }
     void hunt()
     {
@@ -215,7 +217,6 @@ public class enemyBehaviour : MonoBehaviour
 
     void shoot()
     {
-        Debug.Log("i want to shoot");
         /*float theta = gameObject.transform.rotation.eulerAngles.z + 90;
         theta *= Mathf.Deg2Rad;
         Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));*/
