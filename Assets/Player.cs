@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
             // Rotate the player to match their velocity
             Vector2 v = gameObject.GetComponent<Rigidbody2D>().velocity;
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(theta + shoot_angle, Vector3.forward);
         }
 
         // Dilate time
@@ -180,29 +180,25 @@ public class Player : MonoBehaviour
 
         // Reset all enemies
         LevelManager._i.countEnemies();
-        EnemySpawn[] spawns = FindObjectsOfType<EnemySpawn>();
-        foreach(EnemySpawn spawn in spawns)
+        foreach(EnemySpawn spawn in FindObjectsOfType<EnemySpawn>())
         {
             spawn.activate();
         }
 
-        // Clear all bullets
-        Bullet[] bullets = FindObjectsOfType<Bullet>();
-        foreach(Bullet bullet in bullets)
+        // Clear all entities
+        foreach(Bullet bullet in FindObjectsOfType<Bullet>())
         {
             Destroy(bullet.gameObject);
         }
-        
-        // Clear all ammoboxes
-        ammoBox[] ammoboxes = FindObjectsOfType<ammoBox>();
-        foreach(ammoBox ammobox in ammoboxes)
+        foreach(ammoBox ammobox in FindObjectsOfType<ammoBox>())
         {
             Destroy(ammobox.gameObject);
         }
-        
-        // Clear all guns on floor
-        GunDrop[] guns = FindObjectsOfType<GunDrop>();
-        foreach(GunDrop gun in guns)
+        foreach (GunDrop gun in FindObjectsOfType<GunDrop>())
+        {
+            Destroy(gun.gameObject);
+        }
+        foreach (GunProjectile gun in FindObjectsOfType<GunProjectile>())
         {
             Destroy(gun.gameObject);
         }
@@ -234,7 +230,8 @@ public class Player : MonoBehaviour
         float top = MV_ACCEL / MV_FRICTION;
         return top < MV_MAX_SPEED ? top : MV_MAX_SPEED;
     }
-        private void OnTriggerEnter2D(Collider2D other)
+        
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "AmmoBox(Clone)")
         {
@@ -243,4 +240,9 @@ public class Player : MonoBehaviour
 	    }
     }
     
+
+    float shoot_angle = -90;
+    public void setReverseMode(bool state)
+    {
+        shoot_angle = state ? -90 : 90;
     }
