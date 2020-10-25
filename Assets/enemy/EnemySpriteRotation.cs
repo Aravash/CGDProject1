@@ -7,17 +7,20 @@ public class EnemySpriteRotation : MonoBehaviour
     private GameObject Enemy;
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
-    public Sprite[] sprites;
+    private Sprite[] sprites;
     void Start()
     {
+
+        // get EnemyObject
+        Enemy = gameObject.transform.parent.gameObject;
+        // getSpriteSheet
+        sprites = Resources.LoadAll<Sprite>("EnemyRotation-sheet");
+
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if(spriteRenderer.sprite == null)
         {
             spriteRenderer.sprite = sprites[0];
         }
-
-        // get EnemyObject
-        Enemy = gameObject.transform.parent.gameObject;
     }
 
     // Update is called once per frame
@@ -100,6 +103,7 @@ public class EnemySpriteRotation : MonoBehaviour
 
     void ChangeSprite(int num)
     {
+        Debug.Log(num);
         spriteRenderer.sprite = sprites[num];
     }
 }
