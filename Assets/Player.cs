@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
         // create bullet
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
         projectile.GetComponent<Bullet>().init(gameObject, vecFromMyRot());
-
+        
         changeAmmo(-1);
     }
 
@@ -222,6 +222,11 @@ public class Player : MonoBehaviour
         has_gun = true;
         GetComponentInChildren<PlayerSpriteRotation>().ChangeArmed(true);
         //gun_sprite.enabled = true;
+    }
+
+    public int getCurrentAmmo()
+    {
+        return current_ammo;
     }
 
     public static float getTopSpeed()

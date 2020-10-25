@@ -178,8 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e68e63590ab0114d8d26c837b9e0621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_ammo: 2
+  max_ammo: 6
   current_ammo: 0
+  bullet_renderer: {fileID: 0}
 --- !u!50 &617004914207617345
 Rigidbody2D:
   serializedVersion: 4
