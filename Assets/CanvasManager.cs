@@ -20,9 +20,9 @@ public class CanvasManager : MonoBehaviour
         canvasControllerList = GetComponentsInChildren<CanvasController>().ToList();
         canvasControllerList.ForEach(x => x.gameObject.SetActive(false));
         SwitchCanvas(CanvasType.MainMenu);
-
-        // Temp rez fix
-        Screen.SetResolution(1920, 1080, false);
+        
+        // Default screen res
+        Screen.SetResolution(1920, 1080, true);
     }
 
     public void SwitchCanvas(CanvasType _type)

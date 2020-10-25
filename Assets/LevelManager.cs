@@ -12,7 +12,7 @@ public sealed class LevelManager
     private LevelManager()
     {
         // Create initial READY overlay
-        overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+        //overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
 
         // Tie local onSceneLoaded() function to the Scene Manager
         SceneManager.sceneLoaded += onSceneLoaded;
