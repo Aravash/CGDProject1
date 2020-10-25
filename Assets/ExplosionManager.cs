@@ -21,6 +21,7 @@ public class ExplosionManager : MonoBehaviour
         {
             Animator xyz = x.GetComponent<Animator>();
             float multi = TimeManager.Instance.getTimeMultiplier();
+            Debug.Log(multi);
             xyz.SetFloat("timeMultiplier", multi);
         }
     }
