@@ -94,6 +94,9 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
             Debug.Log("Spd: " + gameObject.GetComponent<Rigidbody2D>().velocity.magnitude);
         }
+
+        // Dilate time
+        TimeManager.i.ChangeTime();
     }
 
     private void applyFriction()
