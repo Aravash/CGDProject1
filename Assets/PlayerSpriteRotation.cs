@@ -44,7 +44,6 @@ public class PlayerSpriteRotation : MonoBehaviour
         }
 
         float rounded = Mathf.Round(angle / 22.5f);
-        Debug.Log(rounded);
 
         if (rounded <= 15)
         {
