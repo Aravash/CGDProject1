@@ -22,13 +22,11 @@ public class Player : MonoBehaviour
         spawn_pos = gameObject.transform.position;
         spawn_rot = gameObject.transform.rotation;
 
+        // Vector3 cam_pos = Camera.main.transform.position;
+        // cam_pos.x = gameObject.transform.position.x;
+        // cam_pos.y = gameObject.transform.position.y;
+        // Camera.main.transform.position = cam_pos;
         gun_sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
-
-        Vector3 cam_pos = Camera.main.transform.position;
-        cam_pos.x = gameObject.transform.position.x;
-        cam_pos.y = gameObject.transform.position.y;
-        Camera.main.transform.position = cam_pos;
-
         current_ammo = max_ammo;
     }
 
@@ -75,10 +73,10 @@ public class Player : MonoBehaviour
         }
 
         // cam follow
-        Vector3 cam_pos = Camera.main.transform.position;
-        cam_pos.x = Mathf.SmoothStep(cam_pos.x, gameObject.transform.position.x, Time.fixedDeltaTime * 10);
-        cam_pos.y = Mathf.SmoothStep(cam_pos.y, gameObject.transform.position.y, Time.fixedDeltaTime * 10);
-        Camera.main.transform.position = cam_pos;
+        // Vector3 cam_pos = Camera.main.transform.position;
+        // cam_pos.x = Mathf.SmoothStep(cam_pos.x, gameObject.transform.position.x, Time.fixedDeltaTime * 10);
+        // cam_pos.y = Mathf.SmoothStep(cam_pos.y, gameObject.transform.position.y, Time.fixedDeltaTime * 10);
+        // Camera.main.transform.position = cam_pos;
     }
 
     private void move()
