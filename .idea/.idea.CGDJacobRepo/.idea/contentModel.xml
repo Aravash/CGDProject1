@@ -11,6 +11,7 @@
           <e p="enemyBehaviour.cs" t="Include" />
           <e p="EnemySpawn.cs" t="Include" />
         </e>
+        <e p="EnemyTracker.cs" t="Include" />
         <e p="Player.cs" t="Include" />
       </e>
       <e p="CGDJacobRepo.sln" t="IncludeFlat" />

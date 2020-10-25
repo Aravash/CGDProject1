@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     GameObject child = null;
+    private Vector2 spot;
 
     // Start is called before the first frame update
     void Start()
     {
+        spot = transform.GetChild(0).transform.position;
         activate(true);
     }
 
@@ -19,6 +21,7 @@ public class EnemySpawn : MonoBehaviour
             Destroy(child);
         }
         child = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject, gameObject.transform);
+        child.GetComponent<enemyBehaviour>().setPatrolPos(spot);
 
         // if this is a REspawn, not an initial spawn, set to wake immediately
         if(!initial)
