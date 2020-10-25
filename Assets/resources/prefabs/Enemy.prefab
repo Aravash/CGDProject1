@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3272137463330423552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3272137464042633091}
   m_RootOrder: 0
@@ -141,7 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebugLine: 1
   player: {fileID: 0}
-  shoot_timer_length: 3
+  social_distance: 3.5
+  shoot_timer_length_min: 3
+  shoot_timer_length_max: 1
+  help_timer_length: 2
   movespeed: 1
 --- !u!58 &-5054254741996696624
 CircleCollider2D:

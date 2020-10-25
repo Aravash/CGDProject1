@@ -227,4 +227,13 @@ public class Player : MonoBehaviour
         float top = MV_ACCEL / MV_FRICTION;
         return top < MV_MAX_SPEED ? top : MV_MAX_SPEED;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "AmmoBox(Clone)")
+        {
+	  AudioSource source = GetComponent<AudioSource>();
+	  source.Play();
+	}
+}
 }
