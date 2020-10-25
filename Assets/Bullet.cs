@@ -39,7 +39,8 @@ public class Bullet : MonoBehaviour
         trail.transform.parent = null;
         trail.autodestruct = true;
         // spawn smoke
-        GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletExplosion") as GameObject);
+        //GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletExplosion") as GameObject);
+        GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletSmoke") as GameObject);
         explosion.GetComponent<Transform>().position = transform.position;
         // destroy bullet
         Destroy(gameObject);
