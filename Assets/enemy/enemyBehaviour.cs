@@ -117,7 +117,7 @@ public class enemyBehaviour : MonoBehaviour
     void patrol()
     {
         transform.position = Vector2.MoveTowards(transform.position, patrol_pos,
-            movespeed * Time.deltaTime);
+            movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
         
         //rotate to look at the player
         transform.right = patrol_pos - (Vector2)transform.position;
@@ -128,7 +128,7 @@ public class enemyBehaviour : MonoBehaviour
         // This is more complex, so we don't want to do it every frame
         if (help_timer <= 0)
         {
-            help_timer -= Time.deltaTime;
+            help_timer -= Time.deltaTime * TimeManager.Instance.getTimeMultiplier();
             return;
         }
 
