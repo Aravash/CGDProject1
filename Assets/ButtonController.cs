@@ -2,36 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Linq;
+
+public enum ButtonType
+{
+    BEGIN,
+    OPTIONS,
+    ENDGAME,
+    OPTIONSRETURN
+}
 
 public class ButtonController : MonoBehaviour
 {
     CanvasManager canvasManager;
+    EventSystem eventSystem;
+    Button button;
+    List<ButtonController> buttonControllerList;
+
+    public ButtonType buttonType;
 
     private void Start()
     {
         canvasManager = FindObjectOfType<CanvasManager>();
+        eventSystem = FindObjectOfType<EventSystem>();
+
+        button = GetComponent<Button>();
+        button.onClick.AddListener(OnButtonClicked);
+
+        buttonControllerList = FindObjectsOfType<ButtonController>().ToList();
     }
 
-    public void LoadLevel(string sceneName)
+    void OnButtonClicked()
     {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    public void OpenMenu(string _type)
-    {
-        switch (_type)
+        switch (buttonType)
         {
-            case "OptionsMenu":
-                canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
+            case ButtonType.BEGIN:
+                SceneManager.LoadScene("Level1");
                 break;
-            case "MainMenu":
+            case ButtonType.OPTIONS:
+                canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
+                eventSystem.SetSelectedGameObject(buttonControllerList.Find(x => x.buttonType == ButtonType.OPTIONSRETURN).gameObject);
+                break;
+            case ButtonType.OPTIONSRETURN:
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
+            case ButtonType.ENDGAME:
+                Application.Quit();
+                break;
         }
-    }
-
-    public void EndGame()
-    {
-        Application.Quit();
     }
 }

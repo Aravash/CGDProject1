@@ -12,8 +12,6 @@ public enum CanvasType
 
 public class CanvasManager : MonoBehaviour
 {
-    //public static CanvasManager instance = new CanvasManager();
-
     List<CanvasController> canvasControllerList;
     CanvasController lastActiveCanvas;
 
