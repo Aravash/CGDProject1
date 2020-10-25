@@ -32,16 +32,13 @@ public class TimeManager
     public void ChangeTime()
     {
         currentPlayerSpeed = Player.FindObjectOfType<Player>().GetComponent<Rigidbody2D>().velocity.magnitude;
-
-        timeSpeed = (currentPlayerSpeed > minGameSpeed) ? maxGameSpeed : minGameSpeed;
-
-        currentGameSpeed = Mathf.Lerp(currentGameSpeed, timeSpeed, currentGameSpeed);
+        float interp = currentPlayerSpeed / Player.getTopSpeed();
+        //timeSpeed = (currentPlayerSpeed > minGameSpeed) ? maxGameSpeed : minGameSpeed;
+        currentGameSpeed = Mathf.Lerp(minGameSpeed, maxGameSpeed, interp);
     }
 
     public float getTimeMultiplier()
     {
-        Debug.Log("HAVE DETECTED A CHANGE!");
         return currentGameSpeed;
-
     }
 }
