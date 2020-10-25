@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public sealed class LevelManager
-{     
+{
+    const int NUM_LEVELS = 3;
+    
     // Establish Singleton
     private static readonly LevelManager instance = new LevelManager();
     private LevelManager()
@@ -86,13 +88,24 @@ public sealed class LevelManager
 
         // Load next level
         ++current_level_id;
+        if(current_level_id > NUM_LEVELS)
+        {
+            SceneManager.LoadScene("Menu");
+        }
         SceneManager.LoadScene("Level" + current_level_id);
     }
 
     void onSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Reset self for the new level
         level_state = LevelState.LS_WAIT;
+
+        if(scene.name == "Menu")
+        {
+            // Don't load overlay on the menu
+            return;
+        }
+
+        // Reset self for the new level
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
         GameObject.FindObjectOfType<Player>().setReverseMode(reverse);
     }
