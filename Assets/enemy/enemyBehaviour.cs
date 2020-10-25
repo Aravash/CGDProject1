@@ -243,12 +243,9 @@ public class enemyBehaviour : MonoBehaviour
         GameObject ammobox = Instantiate(Resources.Load("Prefabs/AmmoBox") as GameObject);
         ammobox.GetComponent<Transform>().position = transform.position;
 
-        if(GameObject.FindGameObjectWithTag("ExplosionManager") != null)
-        {
-            GameObject expMan = GameObject.FindGameObjectWithTag("ExplosionManager");
-            expMan.GetComponent<ExplosionManager>().AddExplosion(transform);
-        }
-        
+        GameObject explosion = Instantiate(Resources.Load("Prefabs/Explosion") as GameObject);
+        explosion.GetComponent<Transform>().position = transform.position;
+
         Destroy(gameObject);
         LevelManager._i.enemyDeath();
     }
