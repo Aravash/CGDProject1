@@ -39,7 +39,7 @@ public class ButtonController : MonoBehaviour
         switch (buttonType)
         {
             case ButtonType.BEGIN:
-                SceneManager.LoadScene("Level1");
+                LevelManager._i.loadLevel(1);
                 break;
             case ButtonType.OPTIONS:
                 canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
