@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
         // Move player to start
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;
-        changeAmmo(2);
+        changeAmmo(max_ammo);
         getGun();
 
         // Reset all enemies
