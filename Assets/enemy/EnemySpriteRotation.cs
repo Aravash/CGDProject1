@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpriteRotation : MonoBehaviour
 {
-    public GameObject Enemy;
+    private GameObject Enemy;
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
@@ -15,6 +15,9 @@ public class EnemySpriteRotation : MonoBehaviour
         {
             spriteRenderer.sprite = sprites[0];
         }
+
+        // get EnemyObject
+        Enemy = gameObject.transform.parent.gameObject;
     }
 
     // Update is called once per frame
