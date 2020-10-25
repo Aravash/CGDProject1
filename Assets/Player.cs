@@ -85,14 +85,13 @@ public class Player : MonoBehaviour
 
         Vector2 acceleration = wish_dir;
         acceleration *= MV_ACCEL;
-
         gameObject.GetComponent<Rigidbody2D>().velocity += acceleration;
+
         if (gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
         {
             Vector2 v = gameObject.GetComponent<Rigidbody2D>().velocity;
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
-            Debug.Log("Spd: " + gameObject.GetComponent<Rigidbody2D>().velocity.magnitude);
         }
 
         // Dilate time
