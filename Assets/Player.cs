@@ -244,6 +244,6 @@ public class Player : MonoBehaviour
     float shoot_angle = -90;
     public void setReverseMode(bool state)
     {
-        shoot_angle = state ? -90 : 90;
+        shoot_angle = state ? 90 : -90;
     }
 }
