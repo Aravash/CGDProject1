@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3044773458735717538}
   - component: {fileID: 5342305820530178203}
-  - component: {fileID: 7636872536057172301}
+  - component: {fileID: 3211529551690804287}
   - component: {fileID: 4980304810260518862}
   - component: {fileID: 5741610961792280736}
   m_Layer: 2
-  m_Name: Bullet
+  m_Name: GunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6158207475786641238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.5704012, y: 1.2413143, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7018638383799545219}
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 70e2774b491835b4bac6c61f88b55e7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aaf0565d9b8578d47ad96bbd7ec6d399, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7636872536057172301
+--- !u!114 &3211529551690804287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6158207475786641238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc5f353d0c865cc4c8119dfbb929ed90, type: 3}
+  m_Script: {fileID: 11500000, guid: 19bad2df1106542489944bb6e7749905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trail: {fileID: 1023161624937169363}
@@ -135,14 +135,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.375}
     newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &7738184255427804856
 GameObject:
@@ -214,10 +214,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -235,8 +235,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 0.81568635, g: 0.43921572, b: 0.43921572, a: 1}
+      key0: {r: 0.078431375, g: 0, b: 0.5176471, a: 1}
+      key1: {r: 0.40784317, g: 0.454902, b: 0.81568635, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

@@ -159,7 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebugLine: 1
   player: {fileID: 0}
-  shoot_timer_length: 3
+  shoot_timer_length_min: 3
+  shoot_timer_length_max: 1
   help_timer_length: 2
   movespeed: 1
 --- !u!58 &-5054254741996696624

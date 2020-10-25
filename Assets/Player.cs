@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int max_ammo = 2;
+    [SerializeField] private int current_ammo;
+    private bool has_gun = true;
+    private SpriteRenderer gun_sprite;
+
     const float MV_MAX_SPEED = 5f;
     const float MV_ACCEL = 0.9f;
     const float MV_FRICTION = 0.3f;
@@ -17,10 +22,14 @@ public class Player : MonoBehaviour
         spawn_pos = gameObject.transform.position;
         spawn_rot = gameObject.transform.rotation;
 
+        gun_sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
         Vector3 cam_pos = Camera.main.transform.position;
         cam_pos.x = gameObject.transform.position.x;
         cam_pos.y = gameObject.transform.position.y;
         Camera.main.transform.position = cam_pos;
+
+        current_ammo = max_ammo;
     }
 
     // Update is called once per frame
@@ -40,7 +49,14 @@ public class Player : MonoBehaviour
         }
         if(Input.GetKeyDown("space"))
         {
-            fireProjectile();
+            if (current_ammo > 0)
+            {
+                fireProjectile();
+            }
+            else if (has_gun)
+            {
+                throwGun();
+            }
         }
 
         TimeManager.Instance.ChangeTime();
@@ -125,14 +141,28 @@ public class Player : MonoBehaviour
 
     private void fireProjectile()
     {
-        // Create a vector from the player's rotation
-        float theta = gameObject.transform.rotation.eulerAngles.z + 90;
-        theta *= Mathf.Deg2Rad;
-        Vector2 dir = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
-
         // create bullet
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
-        projectile.GetComponent<Bullet>().init(gameObject, dir);
+        projectile.GetComponent<Bullet>().init(gameObject, vecFromMyRot());
+
+        changeAmmo(-1);
+    }
+
+    private void throwGun()
+    {
+        // create gun bullet
+        GameObject projectile = Instantiate(Resources.Load("Prefabs/GunBullet") as GameObject);
+        projectile.GetComponent<GunProjectile>().init(gameObject, vecFromMyRot());
+        has_gun = false;
+        gun_sprite.enabled = false;
+    }
+    
+    // Create a vector from the player's rotation
+    private Vector2 vecFromMyRot()
+    {
+        float theta = gameObject.transform.rotation.eulerAngles.z + 90;
+        theta *= Mathf.Deg2Rad;
+        return new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
     }
 
     public void kill()
@@ -146,6 +176,8 @@ public class Player : MonoBehaviour
         // Move player to start
         gameObject.transform.position = spawn_pos;
         gameObject.transform.rotation = spawn_rot;
+        changeAmmo(2);
+        getGun();
 
         // Reset all enemies
         EnemyTracker._i.countEnemies();
@@ -161,6 +193,35 @@ public class Player : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }
+        
+        // Clear all ammoboxes
+        ammoBox[] ammoboxes = FindObjectsOfType<ammoBox>();
+        foreach(ammoBox ammobox in ammoboxes)
+        {
+            Destroy(ammobox.gameObject);
+        }
+        
+        // Clear all guns on floor
+        GunDrop[] guns = FindObjectsOfType<GunDrop>();
+        foreach(GunDrop gun in guns)
+        {
+            Destroy(gun.gameObject);
+        }
+    }
+
+    public void changeAmmo(int change)
+    {
+        getGun();
+        current_ammo += change;
+        if (current_ammo > max_ammo) 
+            current_ammo = max_ammo;
+    }
+
+    public void getGun()
+    {
+        if (has_gun) return;
+        has_gun = true;
+        gun_sprite.enabled = true;
     }
 
     public static float getTopSpeed()

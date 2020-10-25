@@ -240,6 +240,9 @@ public class enemyBehaviour : MonoBehaviour
     // external interface funcs
     public void kill()
     {
+        GameObject ammobox = Instantiate(Resources.Load("Prefabs/AmmoBox") as GameObject);
+        ammobox.GetComponent<Transform>().position = transform.position;
+        
         Destroy(gameObject);
         EnemyTracker._i.enemyDeath();
     }
