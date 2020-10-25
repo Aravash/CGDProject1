@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     {
         if (LevelManager._i.getState() == LevelManager.LevelState.LS_WIN)
         {
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown("space"))
             {
                 LevelManager._i.nextLevel();
             }
