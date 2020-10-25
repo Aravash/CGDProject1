@@ -103,7 +103,6 @@ public class EnemySpriteRotation : MonoBehaviour
 
     void ChangeSprite(int num)
     {
-        Debug.Log(num);
         spriteRenderer.sprite = sprites[num];
     }
 }

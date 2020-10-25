@@ -123,13 +123,6 @@ public class enemyBehaviour : MonoBehaviour
 
     void helpAlly()
     {
-        // This is more complex, so we don't want to do it every frame
-        if (help_timer <= 0)
-        {
-            help_timer -= Time.deltaTime;
-            return;
-        }
-
         help_timer = help_timer_length;
 
         // find all nearby allies that are in combat
@@ -266,6 +259,7 @@ public class enemyBehaviour : MonoBehaviour
     {
         if(getState() == EnemyStates.ES_IDLE || getState() == EnemyStates.ES_PATROL)
         {
+            Debug.Log("ALERTED!");
             alerted = true;
         }
     }
