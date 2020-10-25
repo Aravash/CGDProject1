@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
             // Rotate the player to match their velocity
             Vector2 v = gameObject.GetComponent<Rigidbody2D>().velocity;
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(theta + 90, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(theta + shoot_angle, Vector3.forward);
         }
 
         // Dilate time
@@ -222,5 +222,11 @@ public class Player : MonoBehaviour
     {
         float top = MV_ACCEL / MV_FRICTION;
         return top < MV_MAX_SPEED ? top : MV_MAX_SPEED;
+    }
+
+    float shoot_angle = -90;
+    public void setReverseMode(bool state)
+    {
+        shoot_angle = state ? -90 : 90;
     }
 }

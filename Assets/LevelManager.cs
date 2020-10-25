@@ -94,11 +94,18 @@ public sealed class LevelManager
         // Reset self for the new level
         level_state = LevelState.LS_WAIT;
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+        GameObject.FindObjectOfType<Player>().setReverseMode(reverse);
     }
 
     public void loadLevel(int id)
     {
         current_level_id = id;
         SceneManager.LoadScene("Level" + current_level_id);
+    }
+
+    bool reverse = false;
+    public void setReverseMode(bool state)
+    {
+        reverse = true;
     }
 }
