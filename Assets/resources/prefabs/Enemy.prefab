@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3272137463330423552}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710653, w: 0.7071071}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
   m_Children: []
   m_Father: {fileID: 3272137464042633091}
   m_RootOrder: 0
@@ -94,24 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acfd51b790b911b44baa1d23f5df5e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 3272137464042633093}
-  sprites:
-  - {fileID: 2992948503406225109, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -5224011221336633436, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: 540709182052501047, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -3079189472779230636, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: 7356141559236945167, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -695837129781528726, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -7708827659736246355, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: 3844697485457697709, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -4644928311764008042, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -1420584273752788621, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -3507613368434456573, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: 1553468350136126118, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -8221870481191291180, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -5985335819313682074, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -7081520030262228053, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
-  - {fileID: -4753550182595050493, guid: 0f5fed593c443d44cb11ddb6bf1b72ff, type: 3}
 --- !u!1 &3272137464042633093
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +142,7 @@ MonoBehaviour:
   showDebugLine: 1
   player: {fileID: 0}
   shoot_timer_length: 3
+  help_timer_length: 2
   movespeed: 1
 --- !u!58 &-5054254741996696624
 CircleCollider2D:
