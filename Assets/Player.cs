@@ -246,3 +246,4 @@ public class Player : MonoBehaviour
     {
         shoot_angle = state ? -90 : 90;
     }
+}
