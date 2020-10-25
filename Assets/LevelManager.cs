@@ -58,8 +58,11 @@ public sealed class LevelManager
         {
             enemy.wake();
         }
-        GameObject.Destroy(overlay.gameObject);
-        overlay = null;        
+        if(overlay != null)
+        {
+            GameObject.Destroy(overlay.gameObject);
+            overlay = null;
+        }
     }
 
     // When all enemies have died, change State and load Overlay
@@ -91,5 +94,11 @@ public sealed class LevelManager
         // Reset self for the new level
         level_state = LevelState.LS_WAIT;
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
+    }
+
+    public void loadLevel(int id)
+    {
+        current_level_id = id;
+        SceneManager.LoadScene("Level" + current_level_id);
     }
 }
