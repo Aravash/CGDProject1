@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class destroyAfterAnim : MonoBehaviour
 {
+    ExplosionManager expMan;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject GameobjMan =  GameObject.FindGameObjectWithTag("ExplosionManager");
+        expMan = GameobjMan.GetComponent<ExplosionManager>();
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class destroyAfterAnim : MonoBehaviour
 
     void DestroySprite()
     {
+        expMan.RemoveExplosion(gameObject);
         Destroy(gameObject);
     }
 }
