@@ -91,6 +91,7 @@ public sealed class LevelManager
         if(current_level_id > NUM_LEVELS)
         {
             SceneManager.LoadScene("Menu");
+            return;
         }
         SceneManager.LoadScene("Level" + current_level_id);
     }
