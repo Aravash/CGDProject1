@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     const float SPEED = 10f;
     [SerializeField] TrailRenderer trail;
     const float SPAWN_OFFSET = 0.5f;
+    Vector2 true_velocity;
 
     public void init(GameObject origin, Vector2 dir)
     {
@@ -18,8 +19,7 @@ public class Bullet : MonoBehaviour
         pos.y += dir.y * SPAWN_OFFSET;
         gameObject.transform.position = pos;
 
-        // Start the bullet's movement
-        GetComponent<Rigidbody2D>().velocity = dir * SPEED;
+        true_velocity = dir * SPEED;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,5 +40,14 @@ public class Bullet : MonoBehaviour
         trail.autodestruct = true;
         // destroy bullet
         Destroy(gameObject);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 vel = true_velocity;
+        vel.Normalize();
+        vel *= SPEED;
+        vel *= TimeManager.Instance.getTimeMultiplier();
+        GetComponent<Rigidbody2D>().velocity = vel;
     }
 }

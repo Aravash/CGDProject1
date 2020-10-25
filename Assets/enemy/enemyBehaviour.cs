@@ -82,7 +82,7 @@ public class enemyBehaviour : MonoBehaviour
         if (Vector2.Distance(transform.position, player.position) >= 2)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position,
-                movespeed * Time.deltaTime);
+                movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
         }
         //rotate to look at the player
         transform.right = player.position - transform.position;
@@ -100,7 +100,7 @@ public class enemyBehaviour : MonoBehaviour
         if (Vector2.Distance(transform.position, last_player_pos) >= 0)
         {
             transform.position = Vector2.MoveTowards(transform.position, last_player_pos,
-                movespeed * Time.deltaTime);
+                movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
         }
 
         // Gone to last seen pos, and cannot find

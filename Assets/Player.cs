@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
         {
             fireProjectile();
         }
+
+        TimeManager.Instance.ChangeTime();
     }
 
     private void FixedUpdate()
@@ -92,6 +94,9 @@ public class Player : MonoBehaviour
             float theta = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(theta - 90, Vector3.forward);
         }
+
+        // Dilate time
+        TimeManager.i.ChangeTime();
     }
 
     private void applyFriction()
@@ -156,5 +161,11 @@ public class Player : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }
+    }
+
+    public static float getTopSpeed()
+    {
+        float top = MV_ACCEL / MV_FRICTION;
+        return top < MV_MAX_SPEED ? top : MV_MAX_SPEED;
     }
 }
