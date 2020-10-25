@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class EnemySpriteRotation : MonoBehaviour
 {
-    public GameObject Enemy;
+    private GameObject Enemy;
     // Start is called before the first frame update
     private SpriteRenderer spriteRenderer;
-    public Sprite[] sprites;
+    private Sprite[] sprites;
     void Start()
     {
+
+        // get EnemyObject
+        Enemy = gameObject.transform.parent.gameObject;
+        // getSpriteSheet
+        sprites = Resources.LoadAll<Sprite>("EnemyRotation-sheet");
+
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if(spriteRenderer.sprite == null)
         {
@@ -97,6 +103,7 @@ public class EnemySpriteRotation : MonoBehaviour
 
     void ChangeSprite(int num)
     {
+        Debug.Log(num);
         spriteRenderer.sprite = sprites[num];
     }
 }
