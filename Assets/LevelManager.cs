@@ -120,6 +120,6 @@ public sealed class LevelManager
     bool reverse = false;
     public void setReverseMode(bool state)
     {
-        reverse = true;
+        reverse = state;
     }
 }
