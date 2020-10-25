@@ -152,7 +152,8 @@ public class Player : MonoBehaviour
         GameObject projectile = Instantiate(Resources.Load("Prefabs/GunBullet") as GameObject);
         projectile.GetComponent<GunProjectile>().init(gameObject, vecFromMyRot());
         has_gun = false;
-        gun_sprite.enabled = false;
+        GetComponentInChildren<PlayerSpriteRotation>().ChangeArmed(false);
+        //gun_sprite.enabled = false;
     }
     
     // Create a vector from the player's rotation
@@ -219,7 +220,8 @@ public class Player : MonoBehaviour
     {
         if (has_gun) return;
         has_gun = true;
-        gun_sprite.enabled = true;
+        GetComponentInChildren<PlayerSpriteRotation>().ChangeArmed(true);
+        //gun_sprite.enabled = true;
     }
 
     public static float getTopSpeed()
