@@ -32,6 +32,7 @@
             <e p="bulletRender.cs" t="Include" />
           </e>
         </e>
+        <e p="SettingsManager.cs" t="Include" />
         <e p="TimeManager.cs" t="Include" />
       </e>
       <e p="CGDJacobRepo.sln" t="IncludeFlat" />

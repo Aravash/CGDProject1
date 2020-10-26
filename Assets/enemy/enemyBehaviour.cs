@@ -18,7 +18,7 @@ public class enemyBehaviour : MonoBehaviour
     private float shoot_timer_length_min = 3f;
     [SerializeField] 
     private float shoot_timer_length_max = 1f;
-    private float shoot_timer;
+    private float shoot_timer = 0.5f;
     
     [SerializeField] 
     private float help_timer_length = 2f;
@@ -106,6 +106,9 @@ public class enemyBehaviour : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, last_player_pos,
                 movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
         }
+        
+        //rotate to look at the player
+        transform.right = last_player_pos - (Vector2)transform.position;
 
         // Gone to last seen pos, and cannot find
         if((Vector2)transform.position == last_player_pos)
