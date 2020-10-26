@@ -85,13 +85,13 @@ public class Player : MonoBehaviour
 
         // Fetch user directional input
         Vector2 wish_dir = new Vector2(0, 0);
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") || Input.GetKey("right"))
             wish_dir.x++;
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") || Input.GetKey("left"))
             wish_dir.x--;
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w") || Input.GetKey("up"))
             wish_dir.y++;
-        if (Input.GetKey("s"))
+        if (Input.GetKey("s") || Input.GetKey("down"))
             wish_dir.y--;
         wish_dir.Normalize();
 
