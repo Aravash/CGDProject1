@@ -218,6 +218,7 @@ public class Player : MonoBehaviour
         if (has_gun) return;
         has_gun = true;
         GetComponentInChildren<PlayerSpriteRotation>().ChangeArmed(true);
+        playerAction();
         //gun_sprite.enabled = true;
     }
 
