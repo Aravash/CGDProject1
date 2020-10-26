@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3272137464042633091}
   - component: {fileID: 3272137464042633092}
-  - component: {fileID: -5054254741996696624}
+  - component: {fileID: 3271696988755975658}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -146,8 +146,8 @@ MonoBehaviour:
   shoot_timer_length_max: 1
   help_timer_length: 2
   movespeed: 1
---- !u!58 &-5054254741996696624
-CircleCollider2D:
+--- !u!61 &3271696988755975658
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,5 +160,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Size: {x: 0.5, y: 1}
+  m_EdgeRadius: 0
