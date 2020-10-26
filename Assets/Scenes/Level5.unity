@@ -204,6 +204,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 688215248689164425, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 688215248689164425, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 928650345}
+    - target: {fileID: 688215248689164425, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1019180135
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0, type: 3}
 --- !u!1001 &110788765
@@ -1223,11 +1238,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 9092969432935208097, guid: 40547b8f15c40094fab7af3efe073d31,
-        type: 3}
-      propertyPath: orthographic size
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 9092969432935208030, guid: 40547b8f15c40094fab7af3efe073d31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1283,8 +1293,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9092969432935208097, guid: 40547b8f15c40094fab7af3efe073d31,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40547b8f15c40094fab7af3efe073d31, type: 3}
+--- !u!20 &928650345 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9092969432935208097, guid: 40547b8f15c40094fab7af3efe073d31,
+    type: 3}
+  m_PrefabInstance: {fileID: 928650344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &931334979
 PrefabInstance:
   m_ObjectHideFlags: 0
