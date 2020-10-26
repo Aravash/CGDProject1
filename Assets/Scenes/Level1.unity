@@ -4222,17 +4222,17 @@ PrefabInstance:
     - target: {fileID: 688215249051988878, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 192
+      value: 230.4
       objectReference: {fileID: 0}
     - target: {fileID: 688215248689164424, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0,
         type: 3}
       propertyPath: m_UiScaleMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 688215248689164424, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0,
         type: 3}
       propertyPath: m_ReferencePixelsPerUnit
-      value: 16
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a1a4cd3fde313a40a0b13e82ffc19e0, type: 3}
