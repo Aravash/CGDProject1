@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        TimeManager.Instance.ChangeTime();
+        //TimeManager.Instance.ChangeTime();
     }
 
     private void FixedUpdate()
@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
         // create bullet
         GameObject projectile = Instantiate(Resources.Load("Prefabs/Bullet") as GameObject);
         projectile.GetComponent<Bullet>().init(gameObject, vecFromMyRot());
-        
+        playerAction();
         changeAmmo(-1);
     }
 
@@ -153,6 +153,7 @@ public class Player : MonoBehaviour
         projectile.GetComponent<GunProjectile>().init(gameObject, vecFromMyRot());
         has_gun = false;
         GetComponentInChildren<PlayerSpriteRotation>().ChangeArmed(false);
+        playerAction();
         //gun_sprite.enabled = false;
     }
     
@@ -217,6 +218,7 @@ public class Player : MonoBehaviour
         if (has_gun) return;
         has_gun = true;
         GetComponentInChildren<PlayerSpriteRotation>().ChangeArmed(true);
+        playerAction();
         //gun_sprite.enabled = true;
     }
 
@@ -245,5 +247,21 @@ public class Player : MonoBehaviour
     public void setReverseMode(bool state)
     {
         shoot_angle = state ? 90 : -90;
+    }
+
+    void playerAction()
+    {
+
+        StartCoroutine("PlayerAction");
+    
+    }
+
+    public IEnumerator PlayerAction()
+    {
+
+        TimeManager.i.playerAction = true;
+        yield return new WaitForSecondsRealtime(.06f);
+        TimeManager.i.playerAction = false;
+
     }
 }

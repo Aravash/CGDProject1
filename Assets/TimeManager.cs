@@ -11,10 +11,11 @@ public class TimeManager
     private float currentPlayerSpeed;
     [SerializeField]
     private float currentGameSpeed = 0.1f;
-
     private float minGameSpeed = 0.1f;
     private float maxGameSpeed = 1f;
     private float timeSpeed;
+
+    public bool playerAction = false;
     //private float fixedDeltaTime;
 
 
@@ -32,12 +33,21 @@ public class TimeManager
     public void ChangeTime()
     {
         currentPlayerSpeed = Player.FindObjectOfType<Player>().GetComponent<Rigidbody2D>().velocity.magnitude;
+
         float interp = currentPlayerSpeed / Player.getTopSpeed();
         interp *= interp;
         //timeSpeed = (currentPlayerSpeed > minGameSpeed) ? maxGameSpeed : minGameSpeed;
         currentGameSpeed = Mathf.Lerp(minGameSpeed, maxGameSpeed, interp);
-    }
 
+
+        if (playerAction && currentPlayerSpeed < minGameSpeed)
+        {
+            currentGameSpeed = maxGameSpeed;
+            Debug.Log("SHOULD WORK!");
+        }
+        
+       
+    }
     public float getTimeMultiplier()
     {
         if(LevelManager._i.getState() == LevelManager.LevelState.LS_WIN)
