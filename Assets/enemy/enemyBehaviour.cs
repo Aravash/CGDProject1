@@ -269,7 +269,7 @@ public class enemyBehaviour : MonoBehaviour
     {
         if(getState() == EnemyStates.ES_IDLE || getState() == EnemyStates.ES_PATROL)
         {
-            Debug.Log("ALERTED!");
+            //Debug.Log("ALERTED!");
             alerted = true;
         }
     }
