@@ -203,6 +203,10 @@ public class Player : MonoBehaviour
         {
             Destroy(gun.gameObject);
         }
+        foreach (destroyAfterAnim particleFx in FindObjectsOfType<destroyAfterAnim>())
+        {
+            Destroy(particleFx.gameObject);
+        }
     }
 
     public void changeAmmo(int change)

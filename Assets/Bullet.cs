@@ -34,14 +34,18 @@ public class Bullet : MonoBehaviour
         {
             collision.collider.GetComponent<Player>().kill();
         }
+        else
+        {
+            // Only spawn smoke if the bullet didn't hit the player
+            // This check prevents the smoke from lingering into the next round
+            GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletSmoke") as GameObject);
+            explosion.GetComponent<Transform>().position = transform.position;
+        }
 
         // detach trail
         trail.transform.parent = null;
         trail.autodestruct = true;
-        // spawn smoke
-        //GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletExplosion") as GameObject);
-        GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletSmoke") as GameObject);
-        explosion.GetComponent<Transform>().position = transform.position;
+
         // destroy bullet
         //Destroy(gameObject);
         StartCoroutine("DestroyBullet");
