@@ -119,6 +119,21 @@ public class enemyBehaviour : MonoBehaviour
             alerted = true;
         }
     }
+    
+    void avoidSurroundings()
+    {
+        int layermask = 1 << 2;
+        layermask = ~layermask;
+        
+        RaycastHit2D hit;
+        if (hit = Physics2D.CircleCast(transform.position, .5f, Vector3.left, 1f, layermask))
+        {
+            Debug.Log("avoiding " + hit);
+            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position - hit.point,
+                movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
+        }
+    }
+    
     void patrol()
     {
         transform.position = Vector2.MoveTowards(transform.position, patrol_pos,
