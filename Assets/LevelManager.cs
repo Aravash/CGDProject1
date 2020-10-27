@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public sealed class LevelManager
 {
-    const int NUM_LEVELS = 6;
+    const int NUM_LEVELS = 7;
     
     // Establish Singleton
     private static readonly LevelManager instance = new LevelManager();
