@@ -43,6 +43,15 @@ public class Bullet : MonoBehaviour
         GameObject explosion = Instantiate(Resources.Load("Prefabs/BulletSmoke") as GameObject);
         explosion.GetComponent<Transform>().position = transform.position;
         // destroy bullet
+        //Destroy(gameObject);
+        StartCoroutine("DestroyBullet");
+    }
+
+    public IEnumerator DestroyBullet()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSecondsRealtime(.6f);
         Destroy(gameObject);
     }
 
