@@ -21,6 +21,7 @@
           <e p="EnemySpawn.cs" t="Include" />
           <e p="EnemySpriteRotation.cs" t="Include" />
         </e>
+        <e p="exitWin.cs" t="Include" />
         <e p="ExplosionManager.cs" t="Include" />
         <e p="GunDrop.cs" t="Include" />
         <e p="GunProjectile.cs" t="Include" />

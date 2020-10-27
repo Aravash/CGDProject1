@@ -91,6 +91,8 @@ public class enemyBehaviour : MonoBehaviour
         //rotate to look at the player
         transform.right = player.position - transform.position;
         
+        avoidSurroundings();
+        
         //shoot when possible
         if (shoot_timer <= 0f)
         {
@@ -109,6 +111,8 @@ public class enemyBehaviour : MonoBehaviour
         
         //rotate to look at the player
         transform.right = last_player_pos - (Vector2)transform.position;
+        
+        avoidSurroundings();
 
         // Gone to last seen pos, and cannot find
         if((Vector2)transform.position == last_player_pos)
@@ -120,17 +124,18 @@ public class enemyBehaviour : MonoBehaviour
         }
     }
     
+    //avoid getting too close to fellow enemies and walls
     void avoidSurroundings()
     {
         int layermask = 1 << 2;
         layermask = ~layermask;
         
         RaycastHit2D hit;
-        if (hit = Physics2D.CircleCast(transform.position, .5f, Vector3.left, 1f, layermask))
+        if (hit = Physics2D.CircleCast(transform.position, .3f, Vector3.left, .1f, layermask))
         {
             Debug.Log("avoiding " + hit);
-            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position - hit.point,
-                movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
+            transform.position = Vector2.MoveTowards(transform.position, hit.point,
+                -1* movespeed * Time.deltaTime * TimeManager.Instance.getTimeMultiplier());
         }
     }
     
