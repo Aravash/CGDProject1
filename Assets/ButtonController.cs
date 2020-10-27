@@ -11,8 +11,7 @@ public enum ButtonType
     BEGIN,
     OPTIONS,
     ENDGAME,
-    OPTIONSRETURN,
-    RESOLUTIONCHANGE
+    OPTIONSRETURN
 }
 
 public class ButtonController : MonoBehaviour
@@ -20,9 +19,9 @@ public class ButtonController : MonoBehaviour
     CanvasManager canvasManager;
     EventSystem eventSystem;
     Button button;
-    List<ButtonController> buttonControllerList;
 
     public ButtonType buttonType;
+    public Button sendToButton;
 
     private void Start()
     {
@@ -31,8 +30,6 @@ public class ButtonController : MonoBehaviour
 
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClicked);
-
-        buttonControllerList = FindObjectsOfType<ButtonController>().ToList();
     }
 
     void OnButtonClicked()
@@ -44,10 +41,11 @@ public class ButtonController : MonoBehaviour
                 break;
             case ButtonType.OPTIONS:
                 canvasManager.SwitchCanvas(CanvasType.OptionsMenu);
-                eventSystem.SetSelectedGameObject(buttonControllerList.Find(x => x.buttonType == ButtonType.OPTIONSRETURN).gameObject);
+                eventSystem.SetSelectedGameObject(sendToButton.gameObject);
                 break;
             case ButtonType.OPTIONSRETURN:
                 canvasManager.SwitchCanvas(CanvasType.MainMenu);
+                eventSystem.SetSelectedGameObject(sendToButton.gameObject);
                 break;
             case ButtonType.ENDGAME:
                 Application.Quit();
