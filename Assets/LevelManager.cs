@@ -52,7 +52,7 @@ public sealed class LevelManager
     // When the player performs their first input
     public void startLevel()
     {
-        Debug.Log("LEVEL START");
+        //Debug.Log("LEVEL START");
         level_state = LevelState.LS_PLAY;
         countEnemies();
         enemyBehaviour[] enemies = GameObject.FindObjectsOfType<enemyBehaviour>();
@@ -70,7 +70,7 @@ public sealed class LevelManager
     // When all enemies have died, change State and load Overlay
     private void endLevel()
     {
-        Debug.Log("LEVEL COMPLETE");
+        //Debug.Log("LEVEL COMPLETE");
         level_state = LevelState.LS_WIN;
 
         overlay = GameObject.Instantiate(Resources.Load("overlays/WinScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
@@ -90,7 +90,7 @@ public sealed class LevelManager
         ++current_level_id;
         if(current_level_id > NUM_LEVELS)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("WinScreen");
             return;
         }
         SceneManager.LoadScene("Level" + current_level_id);
@@ -108,7 +108,11 @@ public sealed class LevelManager
 
         // Reset self for the new level
         overlay = GameObject.Instantiate(Resources.Load("overlays/ReadyScreen") as GameObject, Camera.main.transform).GetComponent<SpriteRenderer>();
-        GameObject.FindObjectOfType<Player>().setReverseMode(reverse);
+        if (GameObject.FindObjectOfType<Player>() != null)
+        {
+            GameObject.FindObjectOfType<Player>().setReverseMode(reverse);
+        }
+
     }
 
     public void loadLevel(int id)

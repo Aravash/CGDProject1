@@ -43,7 +43,7 @@ public class TimeManager
         if (playerAction && currentPlayerSpeed < minGameSpeed)
         {
             currentGameSpeed = maxGameSpeed;
-            Debug.Log("SHOULD WORK!");
+            //Debug.Log("SHOULD WORK!");
         }
         
        
